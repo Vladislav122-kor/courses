@@ -1,0 +1,81 @@
+$font-montserrat: 'Montserrat', sans-serif;
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-color: #19191A;
+$style-color: #DFA974;
+
+%font-style {
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+    color: $font-color;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+%flex-basic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    @extend %flex-basic;
+    height: 90px;
+
+    &__logo {
+        padding: 0 2rem 0 0;
+
+        &-link {
+            padding: 0.5rem 0;
+            font-family: $font-montserrat;
+            font-weight: 700;
+            @extend %font-style;
+            letter-spacing: 0.1em;
+        }
+
+        &-link:hover {
+            color: $style-color;
+        }
+    }
+
+    &__nav {
+        @extend %flex-basic;
+        width: 100%;
+        max-width: 934px;
+
+        &-element {
+            padding: 0.5rem 1rem 0.5rem 0;
+        }
+
+        &-element:last-child {
+            padding: 0;
+        }
+
+        &-element-link {
+            position: relative;
+            padding: 0.5rem 0;
+            font-family: $font-source-sans-pro;
+            @extend %font-style;
+        }
+
+        &-element-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 0.2rem;
+            background-color: $style-color;
+        }
+
+        &-element-link:hover {
+            color: $style-color;
+        }
+    }
+}

@@ -1,0 +1,86 @@
+$background-color: #222736;
+$font-montserrat: 'Montserrat', sans-serif;
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-color: #AAAAB3;
+$style-color: #DFA974;
+
+%font-style {
+  font-size: 2.2rem;
+  color: $font-color;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+%flex-basic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  height: 210px;
+  background-color: $background-color;
+
+  &-container {
+    @extend %flex-basic;
+    width: 100%;
+    max-width: 1440px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__logo {
+    padding: 0 2rem 0 0;
+
+    &-link {
+      padding: 0.5rem 0;
+      font-family: $font-montserrat;
+      font-weight: 700;
+      @extend %font-style;
+      letter-spacing: 0.1em;
+    }
+
+    &-link:hover {
+      color: $style-color;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    gap: 40px;
+  }
+
+  &__phone-mail-title,
+  &__location-title {
+    font-family: $font-source-sans-pro;
+    @extend %font-style;
+    font-weight: 700;
+    color: $style-color;
+  }
+
+  &__phone-mail {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__mail {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    @extend %font-style;
+
+    &-logo {
+      width: 5rem;
+      height: 5rem;
+      background-image: url('../../assets/svg/mail-logo.svg');
+      background-size: contain;
+    }
+
+    &-text {
+      font-style: italic;
+    }
+  }
+}
+
