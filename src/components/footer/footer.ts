@@ -72,8 +72,8 @@ class Footer extends Component {
     this.location = new Component(this.contactsContainer.element, 'div', ['footer__location']);
     this.locationTitle = new Component(this.location.element, 'h2', ['footer__location-title'], "Расположение");
     this.locationContainer = new Component(this.location.element, 'div', ['footer__location-container']);
-    this.locationLogo = new Component(this.locationContainer.element, 'div', ['footer__location-logo']);
-    this.locationText = new Component(this.locationContainer.element, 'p', ['footer__location-text'], 'Учебный центр «Магнат», 223021, Минский р-н, пос. Озерцо, ул. Менковский тракт д.5');
+    this.locationLogo = new Component(this.locationContainer.element, 'div', ['footer__location-container-logo']);
+    this.locationText = new Component(this.locationContainer.element, 'p', ['footer__location-container-text'], 'Учебный центр «Магнат», 223021, Минский р-н, пос. Озерцо, ул. Менковский тракт д.5');
 
     // create social-media links
     this.media = new Component(this.footerContainer.element, 'div', ['footer__media']);

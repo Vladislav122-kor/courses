@@ -1,0 +1,89 @@
+$style-color: #DFA974;
+
+.start-block {
+    position: relative;
+    width: 100%;
+    height: 701px;
+    background-image: url('../../../assets/img/start-image.jpg');
+    background-size: cover;
+    background-position: center;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: #19191A;
+        opacity: 0.3;
+    }
+
+    &__container {
+        position: relative;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        position: absolute;
+        top: 40px;
+        right: 20px;
+        width: 689px;
+        color: white;
+        z-index: 1;
+    }
+
+    &__title {
+        width: 500px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 6rem;
+        line-height: 7.3rem;
+        letter-spacing: 0.025em;
+    }
+
+    &__description {
+        width: 675px;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 2.2rem;
+        line-height: 2.8rem;
+    }
+
+    &__button {
+        position: relative;
+        width: 269px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 2.7rem;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -0.7rem;
+            right: 0;
+            left: 0;
+            height: 0.2rem;
+            background-color: $style-color;
+            transition: 0.3s;
+        }
+
+        &:hover {
+            color: $style-color;
+
+            &::after {
+                right: -3rem;
+                left: -3rem;
+            }
+        }
+    }
+}

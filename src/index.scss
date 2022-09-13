@@ -10,10 +10,6 @@ html {
 
 body {
     //font-size: 1.6rem;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
     &::-webkit-scrollbar {
         width: 0px;
     }
@@ -21,11 +17,4 @@ body {
     #wt-sky-root {
         display: none;
     }
-}
-
-main {
-    flex-grow: 1;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 20px;
 }

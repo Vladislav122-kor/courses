@@ -1,14 +1,17 @@
 import Component from '../../utils/component';
+import StartBlock from './start-block/start-block';
 
 import './index.scss';
 
 class MainContainer extends Component {
-  private empty: Component;
+  private startBlock: StartBlock;
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['main-container']);
 
-    this.empty = new Component(this.element, 'h2', ['h2'], 'Пусто');
+    this.startBlock = new StartBlock(this.element);
+
+
   }
 
   private clear() {
