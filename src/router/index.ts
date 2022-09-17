@@ -46,7 +46,7 @@ class Router {
       {
         name: '/',
         component: () => {
-          document.querySelectorAll('.header__nav-element-link').forEach((item) => item.classList.remove('active'));
+          document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
           document.querySelector('.header__link-main')?.classList.add('active');
           this.rootElement.append(this.mainPage.element);
         },
@@ -170,7 +170,7 @@ class Router {
     this.defaultRoute = {
       name: 'Default router',
       component: () => {
-        document.querySelectorAll('.header__nav-element-link').forEach((item) => item.classList.remove('active'));
+        document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
         this.rootElement.innerHTML = '404. Page not found.';
       },
     };

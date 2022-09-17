@@ -1,89 +1,101 @@
+$font-montserrat: 'Montserrat', sans-serif;
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-color: white;
 $style-color: #DFA974;
 
+%font-style-big {
+    font-family: $font-montserrat;
+    font-weight: 700;
+    font-size: 6rem;
+    line-height: 7.3rem;
+    letter-spacing: 0.025em;
+    color: $font-color;
+}
+
+%font-style-middle {
+    font-family: $font-montserrat;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+    letter-spacing: 0.1em;
+    color: $font-color;
+}
+
+%font-style-small {
+    font-family: $font-source-sans-pro;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    color: $font-color;
+}
+
+%decoration-animation {
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+%flex-basic {
+    display: flex;
+}
+
 .start-block {
-    position: relative;
     width: 100%;
-    height: 701px;
-    background-image: url('../../../assets/img/start-image.jpg');
+    background-image: linear-gradient( rgba(25, 25, 26, 0.4), rgba(25, 25, 26, 0.4) ), url('../../../assets/img/start-image.jpg');
     background-size: cover;
     background-position: center;
 
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background: #19191A;
-        opacity: 0.3;
-    }
-
     &__container {
-        position: relative;
+        @extend %flex-basic;
+        justify-content: flex-end;
         width: 100%;
         max-width: 1440px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 40px 20px 180px;
     }
 
     &__text {
         display: flex;
         flex-direction: column;
-        gap: 40px;
-        position: absolute;
-        top: 40px;
-        right: 20px;
-        width: 689px;
-        color: white;
-        z-index: 1;
-    }
+        gap: 60px;
+        width: 100%;
+        max-width: 689px;
 
-    &__title {
-        width: 500px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        font-size: 6rem;
-        line-height: 7.3rem;
-        letter-spacing: 0.025em;
-    }
-
-    &__description {
-        width: 675px;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: 2.2rem;
-        line-height: 2.8rem;
-    }
-
-    &__button {
-        position: relative;
-        width: 269px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        font-size: 2.2rem;
-        line-height: 2.7rem;
-        letter-spacing: 0.1em;
-        cursor: pointer;
-        transition: 0.3s;
-
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: -0.7rem;
-            right: 0;
-            left: 0;
-            height: 0.2rem;
-            background-color: $style-color;
-            transition: 0.3s;
+        &-title {
+            width: 462px;
+            @extend %font-style-big;
         }
 
-        &:hover {
-            color: $style-color;
+        &-description {
+            width: 100%;
+            max-width: 683px;
+            @extend %font-style-small;
+        }
 
+        &-button {
+            position: relative;
+            width: 269px;
+            @extend %font-style-middle;
+            @extend %decoration-animation;
+    
             &::after {
-                right: -3rem;
-                left: -3rem;
+                content: '';
+                position: absolute;
+                bottom: -0.5rem;
+                right: 0;
+                left: 0;
+                height: 0.2rem;
+                background-color: $style-color;
+                transition: 0.5s;
+            }
+    
+            &:hover {
+                color: $style-color;
+    
+                &::after {
+                    right: -3rem;
+                    left: -3rem;
+                }
             }
         }
-    }
+    } 
 }

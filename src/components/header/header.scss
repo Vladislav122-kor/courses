@@ -3,12 +3,26 @@ $font-source-sans-pro: 'Source Sans Pro', sans-serif;
 $font-color: #19191A;
 $style-color: #DFA974;
 
-%font-style {
+%font-style-middle {
+    font-family: $font-montserrat;
+    font-weight: 700;
     font-size: 2.2rem;
     line-height: 2.7rem;
+    letter-spacing: 0.1em;
     color: $font-color;
+}
+
+%font-style-small {
+    font-family: $font-source-sans-pro;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    color: $font-color;
+}
+
+%decoration-animation {
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 %flex-basic {
@@ -26,55 +40,41 @@ $style-color: #DFA974;
 
 .header {
     @extend %flex-basic;
+    gap: 40px;
     height: 90px;
 
     &__logo {
-        padding: 0 2rem 0 0;
+        @extend %font-style-middle;
+        @extend %decoration-animation;
 
-        &-link {
-            padding: 0.5rem 0;
-            font-family: $font-montserrat;
-            font-weight: 700;
-            @extend %font-style;
-            letter-spacing: 0.1em;
-        }
-
-        &-link:hover {
+        &:hover {
             color: $style-color;
         }
     }
 
     &__nav {
         @extend %flex-basic;
+        gap: 20px;
         width: 100%;
-        max-width: 934px;
+        max-width: 803px;
 
         &-element {
-            padding: 0.5rem 1rem 0.5rem 0;
-        }
-
-        &-element:last-child {
-            padding: 0;
-        }
-
-        &-element-link {
             position: relative;
-            padding: 0.5rem 0;
-            font-family: $font-source-sans-pro;
-            @extend %font-style;
+            @extend %font-style-small;
+            @extend %decoration-animation;
         }
 
-        &-element-link.active::after {
+        &-element.active::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -0.5rem;
             right: 0;
             left: 0;
             height: 0.2rem;
             background-color: $style-color;
         }
 
-        &-element-link:hover {
+        &-element:hover {
             color: $style-color;
         }
     }

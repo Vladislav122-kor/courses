@@ -4,11 +4,34 @@ $font-source-sans-pro: 'Source Sans Pro', sans-serif;
 $font-color: #AAAAB3;
 $style-color: #DFA974;
 
-%font-style {
+%font-style-big {
+  font-family: $font-montserrat;
+  font-weight: 700;
   font-size: 2.2rem;
+  line-height: 2.7rem;
+  letter-spacing: 0.1em;
   color: $font-color;
+}
+
+%font-style-middle {
+  font-family: $font-source-sans-pro;
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 2.8rem;
+  color: $style-color;
+}
+
+%font-style-small {
+  font-family: $font-source-sans-pro;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+  color: $font-color;
+}
+
+%decoration-animation {
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 %flex-basic {
@@ -18,31 +41,23 @@ $style-color: #DFA974;
 }
 
 .footer {
-  height: 210px;
   padding: 20px;
   background-color: $background-color;
 
   &-container {
     @extend %flex-basic;
-    width: 100%;
-    max-width: 1440px;
+    gap: 40px;
     height: 100%;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 0 20px;
   }
 
   &__logo {
-    padding: 0 2rem 0 0;
+    @extend %font-style-big;
+    @extend %decoration-animation;
 
-    &-link {
-      padding: 0.5rem 0;
-      font-family: $font-montserrat;
-      font-weight: 700;
-      @extend %font-style;
-      letter-spacing: 0.1em;
-    }
-
-    &-link:hover {
+    &:hover {
       color: $style-color;
     }
   }
@@ -52,19 +67,16 @@ $style-color: #DFA974;
     gap: 40px;
   }
 
-  &__phone-mail-title,
-  &__location-title {
-    font-family: $font-source-sans-pro;
-    @extend %font-style;
-    font-weight: 700;
-    color: $style-color;
-  }
-
   &__phone-mail,
   &__location {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  &__phone-mail-title,
+  &__location-title {
+    @extend %font-style-middle;
   }
 
   &__mail,
@@ -73,23 +85,16 @@ $style-color: #DFA974;
     display: flex;
     align-items: center;
     gap: 2rem;
-    @extend %font-style;
+    @extend %font-style-small;
+    @extend %decoration-animation;
 
     &-logo {
       width: 5rem;
       height: 5rem;
-      background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.25));
     }
-
-    &-text {
-      font-style: italic;
-    }
-  }
-
-  &__location-container {
-    align-items: flex-start;
   }
 
   &__location-container-text {
@@ -120,6 +125,8 @@ $style-color: #DFA974;
       height: 5rem;
       background-repeat: no-repeat;
       background-position: center;
+      cursor: pointer;
+      filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.25));
     }
 
     &-instagram {

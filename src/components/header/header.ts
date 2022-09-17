@@ -3,8 +3,6 @@ import Component from '../../utils/component';
 import './header.scss';
 
 class Header extends Component {
-  private logoContainer: Component;
-
   private logo: Component;
 
   private nav: Component;
@@ -13,8 +11,7 @@ class Header extends Component {
     super(parentNode, 'div', ['header', 'container']);
 
     // create logo
-    this.logoContainer = new Component(this.element, 'div', ['header__logo']);
-    this.logo = new Component(this.logoContainer.element, 'a', ['header__logo-link'], 'МАГНАТ');
+    this.logo = new Component(this.element, 'a', ['header__logo'], 'МАГНАТ');
     this.logo.element.setAttribute('href', '#/');
 
     // create nav list
@@ -28,8 +25,7 @@ class Header extends Component {
     const linkClasses = ['main', 'trainings', 'trainers', 'about', 'schedule', 'registration', 'prices', 'contacts'];
 
     for (let i = 0; i < linkNames.length; i += 1) {
-      const linkContainer = new Component(this.nav.element, 'div', ['header__nav-element']);
-      const link = new Component(linkContainer.element, 'a', ['header__nav-element-link', `header__link-${linkClasses[i]}`], `${linkNames[i]}`);
+      const link = new Component(this.nav.element, 'a', ['header__nav-element', `header__link-${linkClasses[i]}`], `${linkNames[i]}`);
       link.element.setAttribute('href', `${linkHrefs[i]}`);
     }
   }
