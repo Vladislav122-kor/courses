@@ -1,0 +1,169 @@
+$font-montserrat: 'Montserrat', sans-serif;
+$font-color-title: #19191A;
+$font-color-card: white;
+$style-color: #DFA974;
+
+%font-style-big {
+    font-family: $font-montserrat;
+    font-weight: 400;
+    font-size: 4.4rem;
+    line-height: 5.4rem;
+    text-align: center;
+    color: $font-color-title;
+}
+
+%font-style-middle {
+    font-family: $font-montserrat;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 3.7rem;
+    text-align: center;
+    color: $font-color-card;
+}
+
+%font-style-small {
+    font-family: $font-montserrat;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+    letter-spacing: 0.1em;
+    color: $font-color-card;
+}
+
+%decoration-animation {
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.trainings-block__container {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.trainings-block__title {
+    position: relative;
+    @extend %font-style-big;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 25%;
+        right: 25%;
+        bottom: -37.5px;
+        height: 0.5rem;
+        background-color: $style-color;
+        box-shadow: 0px 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+    }
+}
+
+.trainings-block__cards-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.trainings-block__cards-arrowLeft,
+.trainings-block__cards-arrowRight {
+    display: none;
+    width: 5rem;
+    height: 8rem;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.trainings-block__cards-arrowLeft {
+    background-image: url('../../../assets/svg/arrow-left.svg');
+}
+
+.trainings-block__cards-arrowRight {
+    background-image: url('../../../assets/svg/arrow-right.svg');
+}
+
+.trainings-block__cards {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+
+    &-card-container {
+        display: flex;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 33.333333%;
+        transition: 0.5s;
+    }
+
+    &-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 216px;
+        width: 390px;
+        height: 432px;
+        padding: 40px 40px 70px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &-title {
+            @extend %font-style-middle;
+        }
+
+        &-button {
+            position: relative;
+            @extend %font-style-small;
+            transition: 0.5s;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -0.5rem;
+                height: 0.2rem;
+                background-color: $style-color;
+                transition: 0.5s;
+            }
+        }
+
+        &:hover {
+            .trainings-block__cards-card-button {
+                color: $style-color;
+
+                &::after {
+                    left: -15%;
+                    right: -15%;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 1249px) {
+    .trainings-block__cards-arrowLeft,
+    .trainings-block__cards-arrowRight {
+        display: block;
+    }
+    
+    .trainings-block__cards-card-container {
+        width: 50%;
+    }
+}
+
+@media(max-width: 980px) {
+    .trainings-block__cards-arrowLeft,
+    .trainings-block__cards-arrowRight {
+        display: block;
+    }
+    
+    .trainings-block__cards-card-container {
+        width: 100%;
+    }
+}
