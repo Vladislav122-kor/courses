@@ -3,6 +3,7 @@ import StartBlock from './start-block/start-block';
 import AboutBlock from './about-block/about-block';
 import TrainingsBlock from './trainings-block/trainings-block';
 import TrainersBlock from './trainers-block/trainers-block';
+import FormBlock from './form-block/form-block';
 
 class MainContainer extends Component {
   private startBlock: StartBlock;
@@ -13,6 +14,8 @@ class MainContainer extends Component {
 
   private trainersBlock: TrainersBlock;
 
+  private formBlock: FormBlock;
+
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['main-container']);
 
@@ -20,6 +23,7 @@ class MainContainer extends Component {
     this.aboutBlock = new AboutBlock(this.element);
     this.trainingsBlock = new TrainingsBlock(this.element);
     this.trainersBlock = new TrainersBlock(this.element);
+    this.formBlock = new FormBlock(this.element);
   }
 
   private clear() {

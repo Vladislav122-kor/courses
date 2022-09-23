@@ -8,7 +8,6 @@ export interface Training {
   name: string;
   photo: string
   form: string;
-  fullName: string;
   trainer: string;
   participants: string[];
   goal: string;
@@ -20,6 +19,7 @@ export interface Training {
   place: string;
   suggestions: string[];
   category: string;
+  link: string;
 }
 
 export interface Trainer {

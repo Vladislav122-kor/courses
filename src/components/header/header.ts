@@ -11,7 +11,7 @@ class Header extends Component {
     super(parentNode, 'div', ['header', 'container']);
 
     // create logo
-    this.logo = new Component(this.element, 'a', ['header__logo'], 'МАГНАТ');
+    this.logo = new Component(this.element, 'a', ['header__logo'], 'УКЦ "МАГНАТ"');
     this.logo.element.setAttribute('href', '#/');
 
     // create nav list
@@ -21,7 +21,7 @@ class Header extends Component {
 
   addNavLinks() {
     const linkNames = ['Главная', 'Тренинги', 'Тренеры', 'О нас', 'Расписание', 'Запись', 'Цены', 'Контакты'];
-    const linkHrefs = ['#/', '#/trainings', '#/trainers', '#/about', '#/schedule', '#/registration', '#/prices', '#/contacts'];
+    const linkHrefs = ['#/', '#/trainings', '#trainers', '#about', '#/schedule', '#/registration', '#/prices', '#footer'];
     const linkClasses = ['main', 'trainings', 'trainers', 'about', 'schedule', 'registration', 'prices', 'contacts'];
 
     for (let i = 0; i < linkNames.length; i += 1) {

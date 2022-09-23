@@ -1,6 +1,5 @@
 import Component from '../../../utils/component';
 import trainers from '../../../assets/files/trainers';
-import Tsigler from '../../../assets/img/Tsigler.png';
 
 import './index.scss';
 
@@ -21,6 +20,7 @@ class TrainersBlock extends Component {
     
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['trainers-block']);
+    this.element.setAttribute('id', 'trainers');
 
     // common container for two blocks
     this.container = new Component(this.element, 'div', ['trainers-block__container']);
@@ -30,8 +30,10 @@ class TrainersBlock extends Component {
 
     this.content = new Component(this.container.element, 'div', ['trainers-block__content']);
     this.arrowLeft = new Component(this.content.element, 'div', ['trainers-block__content__arrow-left']);
+    this.arrowLeft.element.style.backgroundImage = 'url("./assets/svg/arrow-left.svg")';
     this.cards = new Component(this.content.element, 'div', ['trainers-block__content__cards']);
     this.arrowRight = new Component(this.content.element, 'div', ['trainers-block__content__arrow-right']);
+    this.arrowRight.element.style.backgroundImage = 'url("./assets/svg/arrow-right.svg")';
 
     this.margin = 0;
 
@@ -87,10 +89,9 @@ class TrainersBlock extends Component {
 
   private createCards() {
     trainers.forEach((item) => {
-        const tsigler = Tsigler;
         const card = new Component(this.cards.element, 'div', ['trainers-block__content__cards__card']);
         const cardPhoto = new Component(card.element, 'div', ['trainers-block__content__cards__card__photo']);
-        cardPhoto.element.style.backgroundImage = `url('${eval(item.photo as string)}')`;
+        cardPhoto.element.style.backgroundImage = `url('./assets/img/${item.photo}')`;
         const cardTitle = new Component(card.element, 'p', ['trainers-block__content__cards__card__title'], `${item.name}`);
         const cardDescription = new Component(card.element, 'p', ['trainers-block__content__cards__card__description'], `${item.description}`);
     });

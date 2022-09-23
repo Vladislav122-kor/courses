@@ -30,7 +30,8 @@ $style-color: #DFA974;
 }
 
 %decoration-animation {
-    text-decoration: none;
+    filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.25));
+    cursor: pointer;
     transition: 0.5s;
 }
 
@@ -71,14 +72,11 @@ $style-color: #DFA974;
         height: 8rem;
         background-repeat: no-repeat;
         background-position: center;
-    }
+        @extend %decoration-animation;
 
-    &__arrow-left {
-        background-image: url('../../../assets/svg/arrow-left.svg');
-    }
-
-    &__arrow-right {
-        background-image: url('../../../assets/svg/arrow-right.svg');
+        &:active {
+            transform: translate(3px, 3px);
+        }
     }
 
     &__cards {

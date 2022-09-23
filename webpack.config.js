@@ -31,9 +31,23 @@ const baseConfig = {
           'sass-loader',
         ],
       },
-      {
+      /*{
         test: /\.(jpg|png|svg|gif)$/,
         type: 'asset/resource',
+      },*/
+      {
+        test: /\.(png|jpg|jpeg|svg|ico)$/,
+        use: {
+            loader: 'url-loader',
+            options: {
+                limit: 100 * 1024,
+                outputPath: 'img',
+            },
+        },
+      },
+      {
+        test: /\.(png|jpg|jpeg|svg|ico)$/,
+        use: 'file-loader',
       },
     ],
   },
@@ -53,9 +67,8 @@ const baseConfig = {
     new CopyWebpackPlugin({
       patterns: [
         {
-            from: './src/assets/files',
-            to: path.resolve(__dirname, './dist/files'),
-            noErrorOnMissing: true,
+            from: './src/assets',
+            to: path.resolve(__dirname, './dist/assets'),
         },
       ],
     }),
