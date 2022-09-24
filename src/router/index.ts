@@ -3,23 +3,30 @@ import Component from '../utils/component';
 import Main from '../pages/main/main';
 import Trainings from '../pages/trainings/trainings';
 import Training from '../pages/training/training';
+import Schedule from '../pages/schedule/schedule';
 
 class Router {
   private readonly routes: Array<IRoute>;
 
   private defaultRoute: IRoute;
 
-  // Pages
-  mainPage: Component;
-  trainingsPage: Trainings;
   private trainingLink: string;
+
+  // Pages
+  private mainPage: Component;
+
+  private trainingsPage: Trainings;
+
   private trainingPage: Training;
+
+  private schedulePage: Schedule;
 
   constructor(private rootElement: HTMLElement) {
     this.trainingLink = '';
     this.mainPage = new Main(this.rootElement);
     this.trainingsPage = new Trainings(this.rootElement);
     this.trainingPage = new Training(this.rootElement, this.trainingLink);
+    this.schedulePage = new Schedule(this.rootElement);
     
 
     this.routes = [
@@ -37,7 +44,16 @@ class Router {
         component: () => {
           document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
           document.querySelector('.header__link-trainings')?.classList.add('active');
+          window.scrollTo(0, 0);
+          this.trainingsPage.updatePage();
           this.rootElement.append(this.trainingsPage.element);
+          document.querySelectorAll('.trainings-container__categories__category').forEach((item) => {
+            item.classList.remove('active');
+            console.log(sessionStorage.getItem('category'));
+            if (item.innerHTML === sessionStorage.getItem('category') || item.innerHTML.split(' ')[0].includes(sessionStorage.getItem('category') as string)) {
+              item.classList.add('active');
+            }
+          });
         },
       },
 
@@ -47,6 +63,15 @@ class Router {
           document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
           document.querySelector('.header__link-trainings')?.classList.add('active');
           this.trainingPage = new Training(this.rootElement, this.trainingLink);
+        },
+      },
+
+      {
+        name: '/schedule',
+        component: () => {
+          document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
+          document.querySelector('.header__link-schedule')?.classList.add('active');
+          this.rootElement.append(this.schedulePage.element);
         },
       },
     ];

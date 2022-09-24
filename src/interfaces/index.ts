@@ -7,8 +7,6 @@ export interface Training {
   id: number;
   name: string;
   photo: string
-  form: string;
-  trainer: string;
   participants: string[];
   goal: string;
   content: string[];
@@ -27,4 +25,9 @@ export interface Trainer {
   photo: string;
   name: string;
   description: string;
+}
+
+export interface Schedule {
+  month: number;
+  trainings: (string | string[])[];
 }

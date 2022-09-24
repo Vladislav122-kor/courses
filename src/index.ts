@@ -9,6 +9,8 @@ window.addEventListener('DOMContentLoaded', () => {
   //$favicon.setAttribute('type', 'image/x-icon');
   //document.head.appendChild($favicon);
 
+  sessionStorage.setItem('category', 'Все тренинги');
+  sessionStorage.setItem('month', `${(new Date).getMonth()}`);
   const rootElement = document.body;
   const app = new App(rootElement);
 

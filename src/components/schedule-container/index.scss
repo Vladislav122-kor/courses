@@ -1,0 +1,117 @@
+$font-montserrat: 'Montserrat', sans-serif;
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-color: #19191A;
+$font-color-card: white;
+$style-color: #DFA974;
+
+%font-style-big {
+    font-family: $font-source-sans-pro;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+    text-align: center;
+    color: $font-color;
+}
+
+%font-style-middle {
+    font-family: $font-montserrat;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: $font-color-card;
+}
+
+%font-style-small {
+    font-family: $font-source-sans-pro;
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    text-align: center;
+    color: $font-color;
+}
+
+%decoration-animation {
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.schedule-container__container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+.schedule-container__line {
+    width: 100%;
+    height: 5px;
+    background: $style-color;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.schedule-container__content {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__day {
+        width: 14%;
+        border: 1px solid red;
+    }
+}
+
+.schedule-container__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 40px;
+    width: 215px;
+    height: 54px;
+    border: 3px solid $style-color;
+    cursor: pointer;
+
+    &__name {
+        @extend %font-style-big;
+    }
+
+    &__arrow {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &__options-block {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        right: -3px;
+        left: -3px;
+        top: 54px;
+        padding: 10px;
+        border: 3px solid $style-color;
+        background: white;
+
+        &__option {
+            @extend %font-style-big;
+            cursor: pointer;
+
+            &:hover {
+                background: $style-color;
+            }
+        }
+    }
+}
+
+.schedule-container__content {
+    margin: 0 auto;
+
+    &__day {
+        height: 150px;
+        @extend %font-style-small;
+    }
+}

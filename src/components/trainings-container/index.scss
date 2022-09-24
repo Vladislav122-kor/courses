@@ -3,6 +3,7 @@ $font-source-sans-pro: 'Source Sans Pro', sans-serif;
 $font-color: #19191A;
 $font-color-card: white;
 $style-color: #DFA974;
+$background-color: #222736;
 
 %font-style-big {
     font-family: $font-montserrat;
@@ -16,8 +17,8 @@ $style-color: #DFA974;
 %font-style-middle {
     font-family: $font-montserrat;
     font-weight: 700;
-    font-size: 2.2rem;
-    line-height: 2.7rem;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
     text-align: center;
     letter-spacing: 0.1em;
     color: $font-color-card;
@@ -84,6 +85,31 @@ $style-color: #DFA974;
         }
 
         &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -0.5rem;
+            height: 0.2rem;
+            background: $style-color;
+        }
+    }
+}
+
+.trainings-container__categories {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 20px 40px;
+    background: $background-color;
+
+    &__category {
+        position: relative;
+        @extend %font-style-middle;
+        cursor: pointer;
+
+        &.active::after {
             content: '';
             position: absolute;
             left: 0;

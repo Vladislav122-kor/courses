@@ -36,10 +36,17 @@ class TrainingsBlock extends Component {
 
     let count = 0;
     for (let elem of categories) {
-        const card = new Component(this.cards.element, 'div', ['trainings-block__cards-card']);
-        card.element.style.backgroundImage = `linear-gradient( rgba(25, 25, 26, 0.4), rgba(25, 25, 26, 0.4) ), url('./assets/img/${elem[1]}')`
+        const card = new Component(this.cards.element, 'a', ['trainings-block__cards-card']);
+        card.element.style.backgroundImage = `linear-gradient( rgba(25, 25, 26, 0.4), rgba(25, 25, 26, 0.4) ), url('./assets/img/${elem[1]}')`;
+        card.element.setAttribute('href', '#/trainings');
+        card.element.setAttribute('data-category', `${elem[0]}`);
         const cardTitle = new Component(card.element, 'p', ['trainings-block__cards-card-title'], `${elem[0]} тренинги`);
+        cardTitle.element.setAttribute('data-category', `${elem[0]}`);
         const button = new Component(card.element, 'p', ['trainings-block__cards-card-button'], `ПОДРОБНЕЕ`);
+        button.element.setAttribute('data-category', `${elem[0]}`);
+        card.element.addEventListener('click', (e) => {
+          sessionStorage.setItem('category', `${(e.target as HTMLElement).getAttribute('data-category')}`);
+        })
         count++;
     }
   }

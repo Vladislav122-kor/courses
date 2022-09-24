@@ -37,7 +37,7 @@ class FormBlock extends Component {
     this.container.element.appendChild(form);
     this.title = new Component(form, 'h2', ['form-block__content__title'], 'Остались вопросы?');
     this.line = new Component(form, 'div', ['form-block__content__line']);
-    this.description = new Component(form, 'p', ['form-block__content__description'], 'Будем рады помочь! Оставьте запрос, и наш специалист свяжется с Вами по указанному номеру в ближайшее время!');
+    this.description = new Component(form, 'p', ['form-block__content__description'], 'Вы можете задать свой вопрос по e-mail: study@mail.ru, или оставьте Ваши контактные данные и мы свяжемся с Вами!');
     this.name = new Component(form, 'input', ['form-block__content__input-name', '_req']);
     this.name.element.setAttribute('placeholder', 'Ваше имя*');
     this.name.element.setAttribute('type', 'text');
@@ -52,7 +52,7 @@ class FormBlock extends Component {
     this.checkbox.element.setAttribute('name', 'consent');
     this.checkbox.element.setAttribute('id', 'formConsent');
     this.checkbox.element.setAttribute('checked', 'true');
-    this.label = new Component(this.checkboxContainer.element, 'label', ['form-block__content__checkbox-label'], 'Нажимая на кнопку, вы соглашаетесь с условиями обработки персональных данных');
+    this.label = new Component(this.checkboxContainer.element, 'label', ['form-block__content__checkbox-label'], 'Нажимая на кнопку, вы соглашаетесь с условиями обработки персональных данных (Закон РБ №');
     this.label.element.setAttribute('for', 'formConsent');
     this.button = new Component(form, 'button', ['form-block__content__button'], 'ЗАКАЗАТЬ ЗВОНОК');
     this.button.element.setAttribute('type', 'submit');

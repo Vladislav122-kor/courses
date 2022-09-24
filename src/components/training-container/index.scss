@@ -128,9 +128,5 @@ $style-color: #DFA974;
         display: flex;
         flex-direction: column;
         gap: 20px;
-
-        &__trainer {
-            @extend %font-style-small;
-        }
     }
 }

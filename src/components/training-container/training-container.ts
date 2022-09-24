@@ -37,8 +37,6 @@ class TrainingContainer extends Component {
   private img: Component;
 
   private mainBlock: Component;
-
-  private trainer: Component;
   
   constructor(parentNode: HTMLElement, trainingLink: string) {
     super(parentNode, 'div', ['training-container']);
@@ -72,8 +70,6 @@ class TrainingContainer extends Component {
     this.img.element.style.backgroundImage = `url('./assets/img/${this.training.photo}')`;
 
     this.mainBlock = new Component(this.content.element, 'div', ['training-container__content__main-block']);
-    this.trainer = new Component(this.mainBlock.element, 'p', ['training-container__content__main-block__trainer']);
-    this.trainer.element.innerHTML += `<b>Тренер:</b><br>${this.training.trainer}`;
 
     this.formBlock = new FormBlock(this.element);
   }
