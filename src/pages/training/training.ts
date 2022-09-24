@@ -3,14 +3,14 @@ import Component from '../../utils/component';
 
 class Training extends Component {
   private trainingContainer: TrainingContainer;
-  private trainingName: string;
+  private trainingLink: string;
 
-  constructor(parentNode: HTMLElement, trainingName: string) {
+  constructor(parentNode: HTMLElement, trainingLink: string) {
     super(parentNode, 'div', ['training']);
 
-    this.trainingName = trainingName;
+    this.trainingLink = trainingLink;
 
-    this.trainingContainer = new TrainingContainer(this.element, this.trainingName);
+    this.trainingContainer = new TrainingContainer(this.element, this.trainingLink);
   }
 }
 

@@ -6,11 +6,10 @@ $style-color: #DFA974;
 
 %font-style-big {
     font-family: $font-montserrat;
-    font-weight: 700;
-    font-size: 3rem;
-    line-height: 3.7rem;
-    text-align: center;
-    color: $font-color-card;
+    font-weight: 400;
+    font-size: 3.7rem;
+    line-height: 4.6rem;
+    color: $font-color;
 }
 
 %font-style-middle {
@@ -25,7 +24,6 @@ $style-color: #DFA974;
 
 %font-style-small {
     font-family: $font-source-sans-pro;
-    font-weight: 400;
     font-size: 1.8rem;
     line-height: 2.3rem;
     color: $font-color;
@@ -36,7 +34,7 @@ $style-color: #DFA974;
     transition: 0.5s;
 }
 
-.trainings-container__container {
+.training-container__container {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -45,14 +43,14 @@ $style-color: #DFA974;
     padding: 0 20px 40px;
 }
 
-.trainings-container__line {
+.training-container__line {
     width: 100%;
     height: 5px;
     background: $style-color;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-.trainings-container__navigation {
+.training-container__navigation {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -66,7 +64,8 @@ $style-color: #DFA974;
         }
     }
 
-    &__arrow {
+    &__arrow,
+    &__arrow2 {
         width: 2.2rem;
         height: 2rem;
         background-repeat: no-repeat;
@@ -75,6 +74,15 @@ $style-color: #DFA974;
     }
 
     &__trainings-link {
+        @extend %font-style-small;
+        @extend %decoration-animation;
+
+        &:hover {
+            color: $style-color;
+        }
+    }
+
+    &__training-link {
         position: relative;
         @extend %font-style-small;
         @extend %decoration-animation;
@@ -95,56 +103,34 @@ $style-color: #DFA974;
     }
 }
 
-.trainings-container__cards {
+.training-container__content {
     display: flex;
-    justify-content: center;
-    gap: 40px 5%;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 40px;
 
-    &__card {
+    &__start-block {
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
-        align-items: center;
-        width: 30%;
-        height: 432px;
-        padding: 40px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        border-radius: 10px;
-        cursor: pointer;
 
-        &-title {
+        &__title {
             @extend %font-style-big;
         }
 
-        &-button {
-            position: relative;
-            @extend %font-style-middle;
-            transition: 0.5s;
-
-            &::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: -0.5rem;
-                height: 0.2rem;
-                background-color: $style-color;
-                transition: 0.5s;
-            }
+        &__img {
+            width: 30%;
+            height: 280px;
+            background-size: cover;
+            background-position: center;
         }
+    }
 
-        &:hover {
-            .trainings-container__cards__card-button {
-                color: $style-color;
+    &__main-block {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
 
-                &::after {
-                    left: -15%;
-                    right: -15%;
-                }
-            }
+        &__trainer {
+            @extend %font-style-small;
         }
     }
 }

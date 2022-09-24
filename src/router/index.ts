@@ -12,14 +12,14 @@ class Router {
   // Pages
   mainPage: Component;
   trainingsPage: Trainings;
-  private trainingName: string;
-  trainingPage: Training;
+  private trainingLink: string;
+  private trainingPage: Training;
 
   constructor(private rootElement: HTMLElement) {
-    this.trainingName = '';
+    this.trainingLink = '';
     this.mainPage = new Main(this.rootElement);
     this.trainingsPage = new Trainings(this.rootElement);
-    this.trainingPage = new Training(this.rootElement, this.trainingName);
+    this.trainingPage = new Training(this.rootElement, this.trainingLink);
     
 
     this.routes = [
@@ -44,8 +44,9 @@ class Router {
       {
         name: '/training',
         component: () => {
-          this.rootElement.append(this.trainingPage.element);
-          this.trainingPage = new Training(this.rootElement, this.trainingName);
+          document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
+          document.querySelector('.header__link-trainings')?.classList.add('active');
+          this.trainingPage = new Training(this.rootElement, this.trainingLink);
         },
       },
     ];
@@ -70,16 +71,15 @@ class Router {
 
     this.rootElement.innerHTML = '';
     if (currentRouteName.split('/').length === 3) {
-      this.trainingName = currentRouteName.split('/')[3];
+      this.trainingLink = currentRouteName.split('/')[2];
       const currentRoute = this.routes.find(
-        (page) => page.name === currentRouteName,
+        (page) => page.name === '/training',
       );
       (currentRoute || this.defaultRoute).component();
     } else {
       const currentRoute = this.routes.find(
         (page) => page.name === currentRouteName,
       );
-      console.log(currentRoute);
       (currentRoute || this.defaultRoute).component();
     }
   }
