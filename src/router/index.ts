@@ -4,6 +4,7 @@ import Main from '../pages/main/main';
 import Trainings from '../pages/trainings/trainings';
 import Training from '../pages/training/training';
 import Schedule from '../pages/schedule/schedule';
+import Price from '../pages/price/price';
 
 class Router {
   private readonly routes: Array<IRoute>;
@@ -13,28 +14,26 @@ class Router {
   private trainingLink: string;
 
   // Pages
-  private mainPage: Component;
+  private mainPage: Main | undefined;
 
-  private trainingsPage: Trainings;
+  private trainingsPage: Trainings | undefined;
 
-  private trainingPage: Training;
+  private trainingPage: Training | undefined;
 
-  private schedulePage: Schedule;
+  private schedulePage: Schedule | undefined;
+
+  private pricePage: Price | undefined;
 
   constructor(private rootElement: HTMLElement) {
     this.trainingLink = '';
-    this.mainPage = new Main(this.rootElement);
-    this.trainingsPage = new Trainings(this.rootElement);
-    this.trainingPage = new Training(this.rootElement, this.trainingLink);
-    this.schedulePage = new Schedule(this.rootElement);
     
-
     this.routes = [
       {
         name: '/',
         component: () => {
           document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
           document.querySelector('.header__link-main')?.classList.add('active');
+          this.mainPage = new Main(this.rootElement);
           this.rootElement.append(this.mainPage.element);
         },
       },
@@ -44,12 +43,11 @@ class Router {
         component: () => {
           document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
           document.querySelector('.header__link-trainings')?.classList.add('active');
-          window.scrollTo(0, 0);
+          this.trainingsPage = new Trainings(this.rootElement);
           this.trainingsPage.updatePage();
           this.rootElement.append(this.trainingsPage.element);
           document.querySelectorAll('.trainings-container__categories__category').forEach((item) => {
             item.classList.remove('active');
-            console.log(sessionStorage.getItem('category'));
             if (item.innerHTML === sessionStorage.getItem('category') || item.innerHTML.split(' ')[0].includes(sessionStorage.getItem('category') as string)) {
               item.classList.add('active');
             }
@@ -63,6 +61,7 @@ class Router {
           document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
           document.querySelector('.header__link-trainings')?.classList.add('active');
           this.trainingPage = new Training(this.rootElement, this.trainingLink);
+          this.rootElement.append(this.trainingPage.element);
         },
       },
 
@@ -71,7 +70,18 @@ class Router {
         component: () => {
           document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
           document.querySelector('.header__link-schedule')?.classList.add('active');
+          this.schedulePage = new Schedule(this.rootElement);
           this.rootElement.append(this.schedulePage.element);
+        },
+      },
+
+      {
+        name: '/price',
+        component: () => {
+          document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
+          document.querySelector('.header__link-price')?.classList.add('active');
+          this.pricePage = new Price(this.rootElement);
+          this.rootElement.append(this.pricePage.element);
         },
       },
     ];
@@ -86,6 +96,7 @@ class Router {
   }
 
   updateRouter(): void {
+    window.scrollTo(0, 0);
     const currentRouteName = window.location.hash.slice(1);
     if (currentRouteName === 'footer') {
       return;

@@ -18,6 +18,7 @@ export interface Training {
   suggestions: string[];
   category: string;
   link: string;
+  price: number;
 }
 
 export interface Trainer {

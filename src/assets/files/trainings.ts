@@ -41,7 +41,8 @@ const trainings: Training[] = [
             'оборудованный учебных класс для теоретических занятий и бокс в автомастерской для практических занятий.'
         ],
         category: 'Технические',
-        link: 'avtomobilnaya_mekhanika'
+        link: 'avtomobilnaya_mekhanika',
+        price: 200
     },
 
     {
@@ -78,7 +79,8 @@ const trainings: Training[] = [
             'оборудованный учебных класс для теоретических занятий и бокс в автомастерской для практических занятий.'
         ],
         category: 'Технические',
-        link: 'gibridnye_i_elektricheskie_privody'
+        link: 'gibridnye_i_elektricheskie_privody',
+        price: 140
     },
 
     {
@@ -125,7 +127,8 @@ const trainings: Training[] = [
             'оборудованный учебных класс для теоретических занятий и бокс в автомастерской для практических занятий.'
         ],
         category: 'Технические',
-        link: 'dizelnye_dvigateli'
+        link: 'dizelnye_dvigateli',
+        price: 80
     },
 
     {
@@ -156,7 +159,8 @@ const trainings: Training[] = [
             'оборудованный учебных класс для теоретических занятий и бокс в автомастерской для практических занятий.'
         ],
         category: 'Организационно-экомические',
-        link: 'menedzhment_i_upravlenie'
+        link: 'menedzhment_i_upravlenie',
+        price: 400
     },
 
     {
@@ -192,7 +196,8 @@ const trainings: Training[] = [
             'оборудованный учебных класс для теоретических занятий и бокс в автомастерской для практических занятий.'
         ],
         category: 'Технические',
-        link: 'obsluzhivanie_GRM'
+        link: 'obsluzhivanie_GRM',
+        price: 380
     }
 ]
 

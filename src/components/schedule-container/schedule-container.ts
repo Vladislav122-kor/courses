@@ -58,6 +58,7 @@ class ScheduleContainer extends Component {
 
     for (let i = 0; i < date.getDay() - 1; i++) {
         const block = new Component(this.content.element, 'div', ['schedule-container__content__day']);
+        block.element.style.background = `rgba(223, 169, 116, 0.5)`;
         count++;
     }
 
@@ -69,15 +70,16 @@ class ScheduleContainer extends Component {
             dateNumber = `${date.getDate()}`;
         }
 
-        const item = new Component(this.content.element, 'div', ['schedule-container__content__day']);
-        item.element.innerHTML = `<b>${dateNumber}.${monthNumber}</b>`;
+        const block = new Component(this.content.element, 'div', ['schedule-container__content__day']);
+        block.element.style.background = `rgba(223, 169, 116, 1)`;
+        block.element.innerHTML = `<b>${dateNumber}.${monthNumber}</b>`;
 
         schedule.forEach((elem) => {
             if (elem.month - 1 === +(sessionStorage.getItem('month') as string)) {
                 elem.trainings.forEach((element) => {
                     if (+(element[1]) === date.getDate()) {
-                        item.element.innerHTML += '<br>' + element[0];
-                        item.element.innerHTML += '<br>' + '<b>Город:</b> ' + element[2];
+                        block.element.innerHTML += '<br>' + element[0];
+                        block.element.innerHTML += '<br>' + '<b>Город:</b> ' + element[2];
                     }
                 });
             }
@@ -89,6 +91,7 @@ class ScheduleContainer extends Component {
 
     for (let i = 0; i < (date.getDay() - 8) * -1; i++) {
         const block = new Component(this.content.element, 'div', ['schedule-container__content__day']);
+        block.element.style.background = `rgba(223, 169, 116, 0.5)`;
         count++;
     }
   }

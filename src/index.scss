@@ -19,3 +19,7 @@ body {
         display: none;
     }
 }
+
+body.active {
+    overflow-y: hidden;
+}

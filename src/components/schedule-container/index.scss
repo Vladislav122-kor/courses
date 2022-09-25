@@ -55,10 +55,12 @@ $style-color: #DFA974;
 .schedule-container__content {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
 
     &__day {
-        width: 14%;
-        border: 1px solid red;
+        width: 200px;
+        border: 1px solid black;
     }
 }
 
