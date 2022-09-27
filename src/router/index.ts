@@ -3,6 +3,7 @@ import Component from '../utils/component';
 import Main from '../pages/main/main';
 import Trainings from '../pages/trainings/trainings';
 import Training from '../pages/training/training';
+import Trainers from '../pages/trainers/trainers';
 import Schedule from '../pages/schedule/schedule';
 import Price from '../pages/price/price';
 
@@ -19,6 +20,8 @@ class Router {
   private trainingsPage: Trainings | undefined;
 
   private trainingPage: Training | undefined;
+
+  private trainersPage: Trainers | undefined;
 
   private schedulePage: Schedule | undefined;
 
@@ -66,6 +69,16 @@ class Router {
       },
 
       {
+        name: '/trainers',
+        component: () => {
+          document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
+          document.querySelector('.header__link-trainers')?.classList.add('active');
+          this.trainersPage = new Trainers(this.rootElement);
+          this.rootElement.append(this.trainersPage.element);
+        },
+      },
+
+      {
         name: '/schedule',
         component: () => {
           document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
@@ -100,7 +113,7 @@ class Router {
     const currentRouteName = window.location.hash.slice(1);
     if (currentRouteName === 'footer') {
       return;
-    } else if (currentRouteName === 'trainers' || currentRouteName === 'about') {
+    } else if (currentRouteName === 'about') {
       window.location.hash = '#/';
       return;
     }

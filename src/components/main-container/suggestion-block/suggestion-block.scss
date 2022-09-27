@@ -1,0 +1,203 @@
+$font-montserrat: 'Montserrat', sans-serif;
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-color: #19191A;
+$style-color: #DFA974;
+
+%font-title {
+    font-family: $font-montserrat;
+    font-weight: 500;
+    font-size: 4.4rem;
+    line-height: 5.4rem;
+    color: $font-color;
+}
+
+%font-card-title {
+    font-family: $font-source-sans-pro;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 3.8rem;
+    color: $font-color;
+}
+
+%font-card-description {
+    font-family: $font-source-sans-pro;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    color: $font-color;
+}
+
+.suggestion-block {
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    &__board-img {
+        position: absolute;
+        top: 65px;
+        left: -100px;
+        width: 620px;
+        height: 664px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: rotate(-25deg);
+    }
+
+    &__container {
+        display: flex;
+        justify-content: flex-end;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+        width: 100%;
+        max-width: 828px;
+    
+        &__title {
+            position: relative;
+            @extend %font-title;
+    
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -30px;
+                width: 100%;
+                max-width: 828px;
+                height: 0.4rem;
+                background: $style-color;
+                box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+            }
+        }
+    
+        &__cards {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+    
+            &__card {
+                display: flex;
+                gap: 10px;
+    
+                &__img {
+                    min-width: 4rem;
+                    height: 4rem;
+                    background-size: contain;
+                    background-position: center;
+                }
+    
+                &__text-block {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+    
+                    &__title {
+                        @extend %font-card-title;
+                    }
+    
+                    &__description {
+                        @extend %font-card-description;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 1440px) {
+    .suggestion-block__board-img {
+        top: 150px;
+        width: 450px;
+        height: 482px;
+    }
+}
+
+@media(max-width: 1260px) {
+    .suggestion-block__board-img {
+        top: 200px;
+        width: 350px;
+        height: 382px;
+    }
+}
+
+@media(max-width: 1150px) {
+    .suggestion-block__board-img {
+        top: 300px;
+        width: 250px;
+        height: 282px;
+    }
+}
+
+@media(max-width: 1020px) {
+    .suggestion-block__board-img {
+        display: none;
+    }
+
+    .suggestion-block__container {
+        justify-content: flex-start;
+    }
+}
+
+@media(max-width: 750px) {
+    .suggestion-block__content__cards__card {
+        align-self: flex-start;
+    }
+}
+
+@media(max-width: 515px) {
+    .suggestion-block__content__title {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+}
+
+@media(max-width: 400px) {
+    .suggestion-block__content__cards__card__text-block__title {
+        font-size: 2.5rem;
+        line-height: 3.3rem;
+    }
+
+    .suggestion-block__content__cards__card__text-block__description {
+        line-height: 2.5rem;
+    }
+}
+
+@media(max-width: 375px) {
+    .suggestion-block__content__title {
+        font-size: 2.6rem;
+        line-height: 3.6rem;
+    }
+
+    .suggestion-block__content__cards__card__text-block__title {
+        font-size: 2rem;
+        line-height: 2.8rem;
+    }
+
+    .suggestion-block__content__cards__card__text-block__description {
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+    }
+}
+
+@media(max-width: 330px) {
+    .suggestion-block__content__title {
+        font-size: 2.3rem;
+        line-height: 3.3rem;
+    }
+
+    .suggestion-block__content__cards__card__text-block__title {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+    }
+
+    .suggestion-block__content__cards__card__text-block__description {
+        line-height: 2rem;
+    }
+}

@@ -32,7 +32,8 @@ class FormBlock extends Component {
     // common container for two blocks
     this.container = new Component(this.element, 'div', ['form-block__container']);
     const form = document.createElement('form');
-    form.setAttribute('action', '#');
+    form.setAttribute('method', 'POST');
+    form.setAttribute('action', 'send');
     form.classList.add('form-block__content');
     this.container.element.appendChild(form);
     this.title = new Component(form, 'h2', ['form-block__content__title'], 'Остались вопросы?');

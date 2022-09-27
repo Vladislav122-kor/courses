@@ -3,16 +3,15 @@ $font-color-title: #19191A;
 $font-color-card: white;
 $style-color: #DFA974;
 
-%font-style-big {
+%font-title {
     font-family: $font-montserrat;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 4.4rem;
     line-height: 5.4rem;
-    text-align: center;
     color: $font-color-title;
 }
 
-%font-style-middle {
+%font-card-title {
     font-family: $font-montserrat;
     font-weight: 700;
     font-size: 3.5rem;
@@ -21,7 +20,7 @@ $style-color: #DFA974;
     color: $font-color-card;
 }
 
-%font-style-small {
+%font-card-button {
     font-family: $font-montserrat;
     font-weight: 700;
     font-size: 2.2rem;
@@ -30,15 +29,10 @@ $style-color: #DFA974;
     color: $font-color-card;
 }
 
-%decoration-animation {
-    text-decoration: none;
-    transition: 0.5s;
-}
-
 .trainings-block__container {
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 64px;
     max-width: 1440px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -46,17 +40,18 @@ $style-color: #DFA974;
 
 .trainings-block__title {
     position: relative;
-    @extend %font-style-big;
+    @extend %font-title;
 
     &::after {
         content: '';
         position: absolute;
-        left: 25%;
-        right: 25%;
-        bottom: -37.5px;
-        height: 0.5rem;
+        left: 0;
+        bottom: -30px;
+        width: 100%;
+        max-width: 873px;
+        height: 0.4rem;
         background-color: $style-color;
-        box-shadow: 0px 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
     }
 }
 
@@ -73,21 +68,25 @@ $style-color: #DFA974;
         justify-content: space-between;
         align-items: center;
         gap: 216px;
-        width: 390px;
+        width: 100%;
+        max-width: 390px;
         padding: 40px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         border-radius: 10px;
+        box-sizing: border-box;
         cursor: pointer;
+        text-decoration: none;
+        transition: 0.5s;
 
         &-title {
-            @extend %font-style-middle;
+            @extend %font-card-title;
         }
 
         &-button {
             position: relative;
-            @extend %font-style-small;
+            @extend %font-card-button;
             transition: 0.5s;
 
             &::after {
@@ -103,6 +102,8 @@ $style-color: #DFA974;
         }
 
         &:hover {
+            filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.3));
+
             .trainings-block__cards-card-button {
                 color: $style-color;
 
@@ -112,5 +113,49 @@ $style-color: #DFA974;
                 }
             }
         }
+    }
+}
+
+@media(max-width: 430px) {
+    .trainings-block__title {
+        font-size: 3.5rem;
+        line-height: 4.5rem;
+    }
+
+    .trainings-block__cards-card-title {
+        font-size: 3rem;
+        line-height: 3.2rem;
+    }
+}
+
+@media(max-width: 360px) {
+    .trainings-block__title {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    .trainings-block__cards-card {
+        gap: 170px;
+    }
+
+    .trainings-block__cards-card-title {
+        font-size: 2.5rem;
+        line-height: 2.7rem;
+    }
+}
+
+@media(max-width: 320px) {
+    .trainings-block__title {
+        font-size: 2.6rem;
+        line-height: 3.6rem;
+    }
+
+    .trainings-block__cards-card {
+        gap: 140px;
+    }
+
+    .trainings-block__cards-card-title {
+        font-size: 2.2rem;
+        line-height: 2.4rem;
     }
 }

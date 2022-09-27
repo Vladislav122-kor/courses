@@ -35,19 +35,23 @@ class Header extends Component {
     // open and close burger menu
     this.burger.element.addEventListener('click', this.closeOpenBurgerMenu);
     this.dark.element.addEventListener('click', this.closeOpenBurgerMenu);
+    document.querySelectorAll('.header__nav-element').forEach((item) => {
+      item.addEventListener('click', () => {
+        if (item.classList.contains('clicked')) {
+          this.closeOpenBurgerMenu()
+        }
+      })
+    });
   }
 
   private addNavLinks() {
     const linkNames = ['Главная', 'Тренинги', 'Тренеры', 'О нас', 'Расписание', 'Запись', 'Цены', 'Контакты'];
-    const linkHrefs = ['#/', '#/trainings', '#trainers', '#about', '#/schedule', '#/registration', '#/price', '#footer'];
+    const linkHrefs = ['#/', '#/trainings', '#/trainers', '#about', '#/schedule', '#/registration', '#/price', '#footer'];
     const linkClasses = ['main', 'trainings', 'trainers', 'about', 'schedule', 'registration', 'price', 'contacts'];
 
     for (let i = 0; i < linkNames.length; i += 1) {
       const link = new Component(this.nav.element, 'a', ['header__nav-element', `header__link-${linkClasses[i]}`], `${linkNames[i]}`);
       link.element.setAttribute('href', `${linkHrefs[i]}`);
-
-      // open and close burger menu
-      link.element.addEventListener('click', this.closeOpenBurgerMenu);
     }
   }
 
@@ -57,11 +61,13 @@ class Header extends Component {
       (document.querySelector('.header__nav') as HTMLElement).classList.remove('active');
       (document.querySelector('.header__dark') as HTMLElement).classList.remove('active');
       document.body.classList.remove('active');
+      document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('clicked'));
     } else {
       (document.querySelector('.header__burger') as HTMLElement).classList.add('active');
       (document.querySelector('.header__nav') as HTMLElement).classList.add('active');
       (document.querySelector('.header__dark') as HTMLElement).classList.add('active');
       document.body.classList.add('active');
+      document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.add('clicked'));
     }
   }
 }

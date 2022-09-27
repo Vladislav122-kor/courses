@@ -1,0 +1,104 @@
+$font-montserrat: 'Montserrat', sans-serif;
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-color: #19191A;
+$style-color: #DFA974;
+
+%font-title {
+    font-family: $font-montserrat;
+    font-weight: 500;
+    font-size: 4.4rem;
+    line-height: 5.4rem;
+    color: $font-color;
+}
+
+%font-description {
+    font-family: $font-source-sans-pro;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+    color: $font-color;
+}
+
+.about-block {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    &__title {
+        position: relative;
+        @extend %font-title;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -30px;
+            width: 100%;
+            max-width: 828px;
+            height: 0.4rem;
+            background: $style-color;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+        }
+    }
+        
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+
+        &__description {
+            max-width: 829px;
+            @extend %font-description;
+        }
+
+        &__img {
+            width: 484px;
+            height: 534px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+    }
+}
+
+@media(max-width: 1300px) {
+    .about-block__content__img {
+        width: 440px;
+        height: 442px;
+    }
+}
+
+@media(max-width: 1240px) {
+    .about-block__content__img {
+        display: none;
+    }
+}
+
+@media(max-width: 450px) {
+    .about-block__content__description {
+        line-height: 2.8rem;
+    }
+}
+
+@media(max-width: 370px) {
+    .about-block__content__description {
+        line-height: 2.6rem;
+    }
+}
+
+@media(max-width: 320px) {
+    .about-block__content__description {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+    }
+}
