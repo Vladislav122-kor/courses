@@ -5,6 +5,10 @@
     require 'phpmailer/src/Exception.php';
     require 'phpmailer/src/PHPMailer.php';
 
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: PUT, GET, POST");
+    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+
     $mail = new PHPMailer(true);
     $mail->CharSet = 'UTF-8';
     $mail->setLanguage('ru', 'phpmailer/language/');
