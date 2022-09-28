@@ -70,20 +70,17 @@ class FormBlock extends Component {
     const formData = new FormData(form);
 
     if (error === 0) {
-      /*if (formData.get('name') !== null) {
-        sendMail(formData.get('name') as string);
-      }*/
-        /*const response = await fetch('../../../assets/files/sendmail.php', {
+        const response = await fetch('./assets/sendmail.php', {
             method: 'POST',
-            body: formData.get('name')
+            body: formData
         });
-        //console.log(formData.get('name'));
         if (response.ok) {
             const result = await response.json();
             alert(result.message);
+            form.reset();
         } else {
             alert('Ошибка соединения. Попробуйте еще раз');
-        }*/
+        }
     } else {
         alert('Заполните обязательные поля.');
     }
