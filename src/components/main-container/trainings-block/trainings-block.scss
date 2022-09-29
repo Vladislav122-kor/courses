@@ -1,6 +1,6 @@
 $font-montserrat: 'Montserrat', sans-serif;
 $font-color-title: #19191A;
-$font-color-card: white;
+$font-color-card: #19191A;
 $style-color: #DFA974;
 
 %font-title {
@@ -59,21 +59,20 @@ $style-color: #DFA974;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 40px;
-    width: 100%;
+    gap: 40px 5%;
 
     &-card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        gap: 216px;
-        width: 100%;
-        max-width: 390px;
+        gap: 250px;
+        width: 30%;
         padding: 40px;
+        background-color: $style-color;
         background-repeat: no-repeat;
         background-position: center;
-        background-size: cover;
+        background-size: contain;
         border-radius: 10px;
         box-sizing: border-box;
         cursor: pointer;
@@ -102,7 +101,8 @@ $style-color: #DFA974;
         }
 
         &:hover {
-            filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.3));
+            background-position: top;
+            filter: drop-shadow(8px 8px 12px $font-color-title);
 
             .trainings-block__cards-card-button {
                 color: $style-color;

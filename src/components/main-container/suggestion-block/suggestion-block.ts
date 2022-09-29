@@ -30,7 +30,7 @@ class SuggestionsBlock extends Component {
 
     // create side image in absolute position
     this.boardImg = new Component(this.element, 'div', ['suggestion-block__board-img']);
-    this.boardImg.element.style.backgroundImage = 'url("../../../assets/img/board.jpg")';
+    this.boardImg.element.style.backgroundImage = 'url("./assets/img/board.jpg")';
   }
 
   private createCards() {

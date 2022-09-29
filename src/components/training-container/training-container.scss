@@ -1,0 +1,221 @@
+$font-montserrat: 'Montserrat', sans-serif;
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-color: #19191A;
+$style-color: #DFA974;
+
+%font-links {
+    font-family: $font-source-sans-pro;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    color: $font-color;
+}
+
+%font-title {
+    font-family: $font-montserrat;
+    font-weight: 400;
+    font-size: 3.7rem;
+    line-height: 4.6rem;
+    color: $font-color;
+}
+
+%font-description {
+    font-family: $font-source-sans-pro;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+    color: $font-color;
+}
+
+.training-container {
+    position: relative;
+    overflow-x: hidden;
+
+    &__board-img {
+        position: absolute;
+        top: 35%;
+        right: -100px;
+        width: 400px;
+        height: 428px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transform: rotate(-25deg);
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+}
+
+.training-container__container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+.training-container__line {
+    width: 100%;
+    height: 5px;
+    background: $style-color;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.training-container__navigation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    &__main-link {
+        @extend %font-links;
+        text-decoration: none;
+        transition: 0.5s;
+
+        &:hover {
+            color: $style-color;
+        }
+    }
+
+    &__arrow,
+    &__arrow2 {
+        width: 2.2rem;
+        height: 2rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: brightness(0) saturate(100%) invert(7%) sepia(8%) saturate(249%) hue-rotate(202deg) brightness(99%) contrast(94%);
+    }
+
+    &__trainings-link {
+        @extend %font-links;
+        text-decoration: none;
+        transition: 0.5s;
+
+        &:hover {
+            color: $style-color;
+        }
+    }
+
+    &__training-link {
+        position: relative;
+        @extend %font-links;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -0.5rem;
+            height: 0.2rem;
+            background: $style-color;
+        }
+    }
+}
+
+.training-container__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &__start-block {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+
+        &__title {
+            @extend %font-title;
+        }
+
+        &__img {
+            width: 100%;
+            min-width: 450px;
+            max-width: 450px;
+            height: 280px;
+            background-size: contain;
+            background-position: top right;
+            background-repeat: no-repeat;
+        }
+    }
+
+    &__main-block {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        &__context {
+            width: 100%;
+            max-width: 933px;
+
+            &-title,
+            &-description {
+                @extend %font-description;
+            }
+        }
+    }
+}
+
+@media(max-width: 1350px) {
+    .training-container__board-img {
+        width: 250px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .training-container__board-img {
+        display: none;
+    }
+
+    .training-container__content__start-block__img {
+        min-width: 300px;
+        max-width: 300px;
+        max-height: 200px;
+    }
+}
+
+@media(max-width: 940px) {
+    .training-container__content__start-block__title {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+}
+
+@media(max-width: 700px) {
+    .training-container__content__start-block__title {
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+    }
+}
+
+@media(max-width: 700px) {
+    .training-container__content__start-block__title {
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+    }
+}
+
+@media(max-width: 600px) {
+    .training-container__content__start-block {
+        flex-direction: column;
+    }
+
+    .training-container__content__start-block__img {
+        max-width: none;
+        min-width: none;
+        background-position: top left;
+    }
+
+    .training-container__navigation {
+        display: none;
+    }
+}
+
+@media(max-width: 400px) {
+    .training-container__content__start-block__title {
+        font-size: 2.2rem;
+        line-height: 3.2rem;
+    }
+
+    .training-container__content__start-block__img {
+        min-width: 200px;
+        max-height: 150px;
+    }
+}

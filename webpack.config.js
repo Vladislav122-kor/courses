@@ -45,13 +45,6 @@ const baseConfig = {
         test: /\.(png|jpg|jpeg|svg|ico)$/,
         use: 'file-loader',
       },
-      {
-        test: /\.php$/,
-        use: [
-          'html-minify',
-          'php-loader'
-        ]
-      },
     ],
   },
   resolve: {
@@ -73,10 +66,6 @@ const baseConfig = {
             from: './src/assets',
             to: path.resolve(__dirname, './dist/assets'),
         },
-        {
-          from: './src/assets/files/sendmail.php',
-          to: path.resolve(__dirname, './dist/assets'),
-      },
       ],
     }),
   ],

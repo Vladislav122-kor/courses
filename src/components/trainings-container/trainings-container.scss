@@ -5,26 +5,25 @@ $font-color-card: white;
 $style-color: #DFA974;
 $background-color: #222736;
 
-%font-style-big {
+%font-card-title {
     font-family: $font-montserrat;
-    font-weight: 700;
-    font-size: 3rem;
-    line-height: 3.7rem;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 3.2rem;
     text-align: center;
     color: $font-color-card;
 }
 
-%font-style-middle {
+%font-card-button {
     font-family: $font-montserrat;
     font-weight: 700;
-    font-size: 1.8rem;
-    line-height: 2.3rem;
-    text-align: center;
+    font-size: 2.2rem;
+    line-height: 2.7rem;
     letter-spacing: 0.1em;
     color: $font-color-card;
 }
 
-%font-style-small {
+%font-links {
     font-family: $font-source-sans-pro;
     font-weight: 400;
     font-size: 1.8rem;
@@ -32,9 +31,13 @@ $background-color: #222736;
     color: $font-color;
 }
 
-%decoration-animation {
-    text-decoration: none;
-    transition: 0.5s;
+%font-categories {
+    font-family: $font-source-sans-pro;
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 2.7rem;
+    text-align: center;
+    color: $font-color-card;
 }
 
 .trainings-container__container {
@@ -50,7 +53,7 @@ $background-color: #222736;
     width: 100%;
     height: 5px;
     background: $style-color;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .trainings-container__navigation {
@@ -59,8 +62,9 @@ $background-color: #222736;
     gap: 20px;
 
     &__main-link {
-        @extend %font-style-small;
-        @extend %decoration-animation;
+        @extend %font-links;
+        text-decoration: none;
+        transition: 0.5s;
 
         &:hover {
             color: $style-color;
@@ -75,14 +79,9 @@ $background-color: #222736;
         filter: brightness(0) saturate(100%) invert(7%) sepia(8%) saturate(249%) hue-rotate(202deg) brightness(99%) contrast(94%);
     }
 
-    &__trainings-link {
+    &__trainings {
         position: relative;
-        @extend %font-style-small;
-        @extend %decoration-animation;
-
-        &:hover {
-            color: $style-color;
-        }
+        @extend %font-links;
 
         &::after {
             content: '';
@@ -103,11 +102,17 @@ $background-color: #222736;
     gap: 40px;
     padding: 20px 40px;
     background: $background-color;
+    border-radius: 10px;
 
     &__category {
         position: relative;
-        @extend %font-style-middle;
+        @extend %font-categories;
         cursor: pointer;
+        transition: 0.5s;
+
+        &:hover {
+            color: $style-color;
+        }
 
         &.active::after {
             content: '';
@@ -132,24 +137,28 @@ $background-color: #222736;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        gap: 180px;
         width: 30%;
-        height: 432px;
         padding: 40px;
+        background-color: rgb(79, 99, 156);
         background-repeat: no-repeat;
         background-position: center;
-        background-size: cover;
+        background-size: contain;
         border-radius: 10px;
         cursor: pointer;
-        @extend %decoration-animation;
+        text-decoration: none;
+        transition: 0.5s;
 
         &-title {
-            @extend %font-style-big;
+            height: 150px;
+            @extend %font-card-title;
         }
 
         &-button {
             position: relative;
-            @extend %font-style-middle;
-            @extend %decoration-animation;
+            @extend %font-card-button;
+            text-decoration: none;
+            transition: 0.5s;
 
             &::after {
                 content: '';
@@ -159,11 +168,14 @@ $background-color: #222736;
                 bottom: -0.5rem;
                 height: 0.2rem;
                 background-color: $style-color;
-                @extend %decoration-animation;
+                transition: 0.5s;
             }
         }
 
         &:hover {
+            background-position: top;
+            filter: drop-shadow(8px 8px 12px $font-color);
+
             .trainings-container__cards__card-button {
                 color: $style-color;
 
@@ -172,6 +184,54 @@ $background-color: #222736;
                     right: -15%;
                 }
             }
+        }
+    }
+}
+
+@media(max-width: 1080px) {
+    .trainings-container__cards__card {
+        width: 47.5%;
+    }
+}
+
+@media(max-width: 750px) {
+    .trainings-container__categories {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trainings-container__cards__card {
+        width: 100%;
+    }
+}
+
+@media(max-width: 390px) {
+    .trainings-container__categories {
+        padding: 20px 10px;
+        gap: 20px;
+        
+        &__category {
+            font-weight: 400;
+            font-size: 1.8rem;
+        }
+    }
+
+    .trainings-container__cards__card {
+        gap: 140px;
+
+        &-title {
+            font-size: 2.6rem;
+            line-height: 3.6rem;
+        }
+    }
+}
+
+@media(max-width: 320px) {
+    .trainings-container__cards__card {
+
+        &-title {
+            font-size: 2.4rem;
+            line-height: 2.8rem;
         }
     }
 }

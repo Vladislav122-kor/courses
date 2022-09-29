@@ -1,41 +1,50 @@
 $font-montserrat: 'Montserrat', sans-serif;
 $font-source-sans-pro: 'Source Sans Pro', sans-serif;
-$font-color: #19191A;
-$font-color-button: #AAAAB3;
+$font-color: white;
+$font-input-color: #19191A;
 $style-color: #DFA974;
+$background-input: rgba(255, 255, 255, 0.5);
 $background-color: #222736;
 
-%font-style-big {
+%font-title {
     font-family: $font-montserrat;
-    font-weight: 400;
-    font-size: 6rem;
-    line-height: 7.3rem;
-    text-align: center;
+    font-weight: 700;
+    font-size: 4.4rem;
+    line-height: 5.6rem;
     color: $font-color;
 }
 
-%font-style-middle {
-    font-family: $font-montserrat;
-    font-weight: 400;
-    font-size: 2.2rem;
-    line-height: 2.8rem;
-    text-align: center;
-    letter-spacing: 0.1em;
-    color: $font-color-button;
+%font-description {
+    font-family: $font-source-sans-pro;
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 3rem;
+    color: $font-color;
 }
 
-%font-style-small {
+%font-input-text {
     font-family: $font-source-sans-pro;
-    font-weight: 400;
-    font-size: 1.8rem;
-    line-height: 2.3rem;
-    text-align: justify;
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+    color: $font-input-color; 
+}
+
+%font-button-text {
+    font-family: $font-source-sans-pro;
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+    letter-spacing: 0.05em;
     color: $font-color; 
 }
 
-%decoration-animation {
-    text-decoration: none;
-    transition: 0.5s;
+%font-checkbox-text {
+    font-family: $font-source-sans-pro;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    color: $font-color; 
 }
 
 .form-block {
@@ -55,67 +64,110 @@ $background-color: #222736;
         display: flex;
         flex-direction: column;
         gap: 20px;
-        width: 437px;
+        width: 100%;
+        max-width: 390px;
 
         &__title {
-            @extend %font-style-big;
+            @extend %font-title;
         }
 
         &__line {
             width: 100%;
-            height: 0.5rem;
+            height: 0.4rem;
             background: $style-color;
-            box-shadow: 0px 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         &__description {
-            @extend %font-style-small;
+            @extend %font-description;
         }
 
         &__input-name,
         &__input-phone {
             width: 100%;
+            max-width: 275px;
             height: 50px;
-            @extend %font-style-small;
+            @extend %font-input-text;
             padding: 20px 14px;
-            background:rgba(255, 255, 255, 0);
-            border: 3px solid #19191A;
+            background: $background-input;
+            border: none;
+            border-radius: 10px;
+            transition: 0.5s;
+
+            &:hover {
+                box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.5);
+            }
 
             &._error {
                 border: 3px solid red;
             }
         }
 
+        &__input-name::-webkit-input-placeholder,
+        &__input-phone::-webkit-input-placeholder { color: $font-input-color; }
+
+        &__input-name:-ms-input-placeholder,
+        &__input-phone:-ms-input-placeholder { color: $font-input-color; }
+
+        &__input-name::-ms-input-placeholder,
+        &__input-phone::-ms-input-placeholder { color: $font-input-color; }
+
+        &__input-name::placeholder,
+        &__input-phone::placeholder { color: $font-input-color; }
+
+        &__input-phone::-webkit-outer-spin-button,
+        &__input-phone::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+         
+        &__input-phone {
+          -moz-appearance: textfield;
+        }       
+
         &__checkbox {
             display: flex;
             justify-content: space-between;
             gap: 20px;
             width: 100%;
+            transition: 0.5s;
+
+            &._error {
+                border: 3px solid red;
+            }
 
             &-input {
                 width: 3rem;
                 height: 3rem;
-
-                &._error {
-                    border: 1px solid red;
-                    width: 5rem;
-                    height: 5rem;
-                }
             }
 
             &-label {
-                @extend %font-style-small;
+                @extend %font-checkbox-text;
             }
         }
 
         &__button {
             width: 100%;
-            height: 80px;
+            max-width: 275px;
+            height: 64px;
             padding: 0 20px;
-            @extend %font-style-middle;
+            @extend %font-button-text;
             background: $background-color;
             border: none;
             cursor: pointer;
+            border-radius: 10px;
+            transition: 0.5s;
+
+            &:hover {
+                box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.5);
+            }
         }
+    }
+}
+
+@media(max-width: 300px) {
+    .form-block__content__title {
+        font-size: 3.4rem;
+        line-height: 4.6rem;
     }
 }

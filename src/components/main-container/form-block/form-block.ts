@@ -25,15 +25,14 @@ class FormBlock extends Component {
     
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['form-block']);
-    this.element.style.backgroundImage = 'linear-gradient( rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) ), url("./assets/img/form.jpg")';
+    this.element.style.backgroundImage = 'linear-gradient( rgba(25, 25, 26, 0.5), rgba(25, 25, 26, 0.5) ), url("./assets/img/form.jpg")';
 
     this.formSend = this.formSend.bind(this);
 
     // common container for two blocks
     this.container = new Component(this.element, 'div', ['form-block__container']);
     const form = document.createElement('form');
-    form.setAttribute('method', 'POST');
-    form.setAttribute('action', 'send');
+    form.setAttribute('id', 'tg');
     form.classList.add('form-block__content');
     this.container.element.appendChild(form);
     this.title = new Component(form, 'h2', ['form-block__content__title'], 'Остались вопросы?');
@@ -43,17 +42,19 @@ class FormBlock extends Component {
     this.name.element.setAttribute('placeholder', 'Ваше имя*');
     this.name.element.setAttribute('type', 'text');
     this.name.element.setAttribute('name', 'name');
+    this.name.element.setAttribute('autocomplete', 'off');
     this.phone = new Component(form, 'input', ['form-block__content__input-phone', '_req']);
-    this.phone.element.setAttribute('placeholder', 'Ваш телефон*');
+    this.phone.element.setAttribute('placeholder', 'пример: +375291234567');
     this.phone.element.setAttribute('type', 'number');
     this.phone.element.setAttribute('name', 'phone');
+    this.phone.element.setAttribute('autocomplete', 'off');
     this.checkboxContainer = new Component(form, 'div', ['form-block__content__checkbox']);
     this.checkbox = new Component(this.checkboxContainer.element, 'input', ['form-block__content__checkbox-input', '_req']);
     this.checkbox.element.setAttribute('type', 'checkbox');
     this.checkbox.element.setAttribute('name', 'consent');
     this.checkbox.element.setAttribute('id', 'formConsent');
     this.checkbox.element.setAttribute('checked', 'true');
-    this.label = new Component(this.checkboxContainer.element, 'label', ['form-block__content__checkbox-label'], 'Нажимая на кнопку, вы соглашаетесь с условиями обработки персональных данных (Закон РБ №');
+    this.label = new Component(this.checkboxContainer.element, 'label', ['form-block__content__checkbox-label'], 'Нажимая на кнопку, вы соглашаетесь с условиями обработки персональных данных (в соответствии с Законом Республики Беларусь "О защите персональных данных" № 99-3 от 07.05.2021)');
     this.label.element.setAttribute('for', 'formConsent');
     this.button = new Component(form, 'button', ['form-block__content__button'], 'ЗАКАЗАТЬ ЗВОНОК');
     this.button.element.setAttribute('type', 'submit');
@@ -93,10 +94,10 @@ class FormBlock extends Component {
     for (let i = 0; i < formReq.length; i++) {
         const input = formReq[i];
         this.formRemoveError(input as HTMLInputElement);
+        document.querySelector('.form-block__content__checkbox')?.classList.remove('_error');
 
         if (input.getAttribute('type') === 'checkbox' && (input as HTMLInputElement).checked === false) {
-            console.log(true);
-            this.formAddError(input as HTMLInputElement);
+            document.querySelector('.form-block__content__checkbox')?.classList.add('_error');
             error++;
         } else {
             if ((input as HTMLInputElement).value === '') {

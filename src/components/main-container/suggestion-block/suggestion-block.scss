@@ -43,6 +43,7 @@ $style-color: #DFA974;
         background-size: contain;
         background-repeat: no-repeat;
         transform: rotate(-25deg);
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
 
     &__container {

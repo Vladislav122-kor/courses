@@ -5,9 +5,17 @@ class Footer extends Component {
 
   private footerContainer: Component;
 
+  private logoContainer: Component;
+
   private logo: Component;
 
-  private contactsContainer: Component;
+  private media: Component;
+
+  private instagram: Component;
+
+  private facebook: Component;
+
+  private twitter: Component;
 
   private phoneMail: Component;
 
@@ -34,14 +42,6 @@ class Footer extends Component {
   private locationLogo: Component;
 
   private locationText: Component;
-
-  private media: Component;
-
-  private instagram: Component;
-
-  private facebook: Component;
-
-  private twitter: Component;
   
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['footer']);
@@ -49,45 +49,49 @@ class Footer extends Component {
 
     this.footerContainer = new Component(this.element, 'div', ['footer-container']);
 
-    // create logo
-    this.logo = new Component(this.footerContainer.element, 'a', ['footer__logo'], 'УКЦ "МАГНАТ"');
+    // create logo container with links to social-media
+    this.logoContainer = new Component(this.footerContainer.element, 'div', ['footer-container__logo-container']);
+
+    this.logo = new Component(this.logoContainer.element, 'a', ['footer-container__logo-container__logo'], 'УКЦ "МАГНАТ"');
     this.logo.element.setAttribute('href', '#/');
 
-    // create contacts container
-    this.contactsContainer = new Component(this.footerContainer.element, 'div', ['footer__contacts']);
+    this.media = new Component(this.logoContainer.element, 'div', ['footer-container__logo-container__media']);
+
+    this.instagram = new Component(this.media.element, 'div', ['footer-container__logo-container__media-instagram']);
+    this.instagram.element.style.backgroundImage = 'url("./assets/svg/instagram-logo.svg")';
+
+    this.facebook = new Component(this.media.element, 'div', ['footer-container__logo-container__media-facebook']);
+    this.facebook.element.style.backgroundImage = 'url("./assets/svg/facebook-logo.svg")';
+
+    this.twitter = new Component(this.media.element, 'div', ['footer-container__logo-container__media-twitter']);
+    this.twitter.element.style.backgroundImage = 'url("./assets/svg/twitter-logo.svg")';
 
     // create phone and mail
-    this.phoneMail = new Component(this.contactsContainer.element, 'div', ['footer__phone-mail']);
-    this.phoneMailTitle = new Component(this.phoneMail.element, 'h2', ['footer__phone-mail-title'], "Контакты");
-    this.mailContainer = new Component(this.phoneMail.element, 'a', ['footer__mail']);
+    this.phoneMail = new Component(this.footerContainer.element, 'div', ['footer-container__phone-mail']);
+    this.phoneMailTitle = new Component(this.phoneMail.element, 'h2', ['footer-container__phone-mail__title'], "Контакты");
+
+    this.mailContainer = new Component(this.phoneMail.element, 'a', ['footer-container__phone-mail__mail']);
     this.mailContainer.element.setAttribute('href', 'mailto:study@center.by');
-    this.mailLogo = new Component(this.mailContainer.element, 'div', ['footer__mail-logo']);
+    this.mailLogo = new Component(this.mailContainer.element, 'div', ['footer-container__phone-mail__mail-logo']);
     this.mailLogo.element.style.backgroundImage = 'url("./assets/svg/mail-logo.svg")';
-    this.mailText = new Component(this.mailContainer.element, 'p', ['footer__mail-text'], 'study@center.by');
-    this.phoneContainer = new Component(this.phoneMail.element, 'a', ['footer__phone']);
+    this.mailText = new Component(this.mailContainer.element, 'p', ['footer-container__phone-mail__mail-text'], 'study@center.by');
+
+    this.phoneContainer = new Component(this.phoneMail.element, 'a', ['footer-container__phone-mail__phone']);
     this.phoneContainer.element.setAttribute('href', 'tel:+375291234567');
-    this.phoneLogo = new Component(this.phoneContainer.element, 'div', ['footer__phone-logo']);
+    this.phoneLogo = new Component(this.phoneContainer.element, 'div', ['footer-container__phone-mail__phone-logo']);
     this.phoneLogo.element.style.backgroundImage = 'url("./assets/svg/phone-logo.svg")';
-    this.phoneText = new Component(this.phoneContainer.element, 'p', ['footer__phone-text'], '+375 17 123 45 67');
+    this.phoneText = new Component(this.phoneContainer.element, 'p', ['footer-container__phone-mail__phone-text'], '+375 17 123 45 67');
 
     // create location
-    this.location = new Component(this.contactsContainer.element, 'div', ['footer__location']);
-    this.locationTitle = new Component(this.location.element, 'h2', ['footer__location-title'], "Расположение");
-    this.locationContainer = new Component(this.location.element, 'a', ['footer__location-container']);
+    this.location = new Component(this.footerContainer.element, 'div', ['footer-container__location']);
+    this.locationTitle = new Component(this.location.element, 'h2', ['footer-container__location__title'], "Расположение");
+
+    this.locationContainer = new Component(this.location.element, 'a', ['footer-container__location__location']);
     this.locationContainer.element.setAttribute('href', 'https://www.google.by/maps/place/%D0%A1%D0%A2%D0%9E+%22%D0%9C%D0%B0%D0%B3%D0%BD%D0%B0%D1%82+%D0%A1%D0%B8%D1%82%D0%B8%22/@53.8515028,27.4270573,299m/data=!3m1!1e3!4m5!3m4!1s0x46dbda3fdb39aef9:0xe5827269c40859ea!8m2!3d53.8518116!4d27.4272683?hl=ru%22%20target=%22_blank%22%3E%3Cdiv%20class=%22svg-1-location');
     this.locationContainer.element.setAttribute('target', '_blank');
-    this.locationLogo = new Component(this.locationContainer.element, 'div', ['footer__location-container-logo']);
+    this.locationLogo = new Component(this.locationContainer.element, 'div', ['footer-container__location__location-logo']);
     this.locationLogo.element.style.backgroundImage = 'url("./assets/svg/location-logo.svg")';
-    this.locationText = new Component(this.locationContainer.element, 'p', ['footer__location-container-text'], 'Учебный центр «Магнат», 223021, Минский р-н, пос. Озерцо, ул. Менковский тракт д.5');
-
-    // create social-media links
-    this.media = new Component(this.footerContainer.element, 'div', ['footer__media']);
-    this.instagram = new Component(this.media.element, 'div', ['footer__media-instagram']);
-    this.instagram.element.style.backgroundImage = 'url("./assets/svg/instagram-logo.svg")';
-    this.facebook = new Component(this.media.element, 'div', ['footer__media-facebook']);
-    this.facebook.element.style.backgroundImage = 'url("./assets/svg/facebook-logo.svg")';
-    this.twitter = new Component(this.media.element, 'div', ['footer__media-twitter']);
-    this.twitter.element.style.backgroundImage = 'url("./assets/svg/twitter-logo.svg")';
+    this.locationText = new Component(this.locationContainer.element, 'p', ['footer-container__location__location-text'], 'Учебный центр «Магнат», 223021, Минский р-н, пос. Озерцо, ул. Менковский тракт д.5');
   }
 }
 

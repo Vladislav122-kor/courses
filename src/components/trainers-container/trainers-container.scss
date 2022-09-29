@@ -1,0 +1,139 @@
+$font-montserrat: 'Montserrat', sans-serif;
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-color: #19191A;
+$style-color: #DFA974;
+
+%font-card-title {
+    font-family: $font-source-sans-pro;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 3.8rem;
+    text-align: center;
+    color: $font-color;
+}
+
+%font-card-description {
+    font-family: $font-source-sans-pro;
+    font-size: 1.8rem;
+    line-height: 3rem;
+    text-align: justify;
+    color: $font-color;
+}
+
+%font-links {
+    font-family: $font-source-sans-pro;
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    color: $font-color;
+}
+
+.trainers-container__container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+.trainers-container__line {
+    width: 100%;
+    height: 5px;
+    background: $style-color;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.trainers-container__navigation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &__main-link {
+        @extend %font-links;
+        text-decoration: none;
+        transition: 0.5s;
+
+        &:hover {
+            color: $style-color;
+        }
+    }
+
+    &__arrow {
+        width: 2.2rem;
+        height: 2rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: brightness(0) saturate(100%) invert(7%) sepia(8%) saturate(249%) hue-rotate(202deg) brightness(99%) contrast(94%);
+    }
+
+    &__trainers {
+        position: relative;
+        @extend %font-links;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -0.5rem;
+            height: 0.2rem;
+            background: $style-color;
+        }
+    }
+}
+
+.trainers-container__content {
+    display: flex;
+    gap: 40px 5%;
+    flex-wrap: wrap;
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 30%;
+    
+        &__photo {
+            width: 280px;
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+    
+        &__title {
+            height: 90px;
+            @extend %font-card-title;
+        }
+    
+        &__description {
+            @extend %font-card-description;
+        }
+    }
+}
+
+
+@media(max-width: 1000px) {
+    .trainers-container__content__card {
+        width: 47.5%;
+    }
+}
+
+@media(max-width: 660px) {
+    .trainers-container__content__card {
+        width: 100%;
+    }
+}
+
+@media(max-width: 340px) {
+    .trainers-container__contents__card__title {
+        font-size: 2.5rem;
+        line-height: 3.3rem;
+    }
+
+    .trainers-container__content__card__description {
+        line-height: 2.5rem;
+    }
+}

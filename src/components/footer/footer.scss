@@ -1,10 +1,10 @@
-$background-color: #222736;
 $font-montserrat: 'Montserrat', sans-serif;
 $font-source-sans-pro: 'Source Sans Pro', sans-serif;
-$font-color: #AAAAB3;
+$font-color: white;
 $style-color: #DFA974;
+$background-color: #222736;
 
-%font-style-big {
+%font-logo {
   font-family: $font-montserrat;
   font-weight: 700;
   font-size: 2.2rem;
@@ -13,31 +13,20 @@ $style-color: #DFA974;
   color: $font-color;
 }
 
-%font-style-middle {
+%font-title {
   font-family: $font-source-sans-pro;
-  font-weight: 700;
-  font-size: 2.2rem;
-  line-height: 2.8rem;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2.5rem;
   color: $style-color;
 }
 
-%font-style-small {
+%font-text {
   font-family: $font-source-sans-pro;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.8rem;
-  line-height: 2.8rem;
+  line-height: 2.3rem;
   color: $font-color;
-}
-
-%decoration-animation {
-  text-decoration: none;
-  transition: 0.5s;
-}
-
-%flex-basic {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .footer {
@@ -45,101 +34,106 @@ $style-color: #DFA974;
   background-color: $background-color;
 
   &-container {
-    @extend %flex-basic;
+    display: flex;
+    justify-content: space-between;
     gap: 40px;
     height: 100%;
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 20px;
-  }
 
-  &__logo {
-    @extend %font-style-big;
-    @extend %decoration-animation;
+    &__logo-container {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
 
-    &:hover {
-      color: $style-color;
-    }
-  }
+      &__logo {
+        @extend %font-logo;
+        text-decoration: none;
+        transition: 0.5s;
 
-  &__contacts {
-    display: flex;
-    gap: 40px;
-  }
+        &:hover {
+          color: $style-color;
+        }
+      }
 
-  &__phone-mail,
-  &__location {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  &__phone-mail-title,
-  &__location-title {
-    @extend %font-style-middle;
-  }
-
-  &__mail,
-  &__phone,
-  &__location-container {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    @extend %font-style-small;
-    @extend %decoration-animation;
-
-    &-logo {
-      width: 5rem;
-      height: 5rem;
-      background-repeat: no-repeat;
-      background-position: center;
-      filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.25));
-    }
-  }
-
-  &__location-container-text {
-    width: 100%;
-    max-width: 350px;
-  }
-
-  &__mail-logo {
-    background-image: url('../../assets/svg/mail-logo.svg');
-  }
-
-  &__phone-logo {
-    background-image: url('../../assets/svg/phone-logo.svg');
-  }
-
-  &__location-container-logo {
-    background-image: url('../../assets/svg/location-logo.svg');
-  }
-
-  &__media {
-    display: flex;
-    gap: 20px;
-
-    &-instagram,
-    &-facebook,
-    &-twitter {
-      width: 5rem;
-      height: 5rem;
-      background-repeat: no-repeat;
-      background-position: center;
-      cursor: pointer;
-      filter: drop-shadow(0 0.5rem 0.5rem rgba(0, 0, 0, 0.25));
+      &__media {
+        display: flex;
+    
+        &-instagram,
+        &-facebook,
+        &-twitter {
+          width: 5rem;
+          height: 5rem;
+          background-repeat: no-repeat;
+          background-position: center;
+          cursor: pointer;
+        }
+    
+        &-instagram {
+          background-image: url('../../assets/svg/instagram-logo.svg');
+        }
+    
+        &-facebook {
+          background-image: url('../../assets/svg/facebook-logo.svg');
+        }
+    
+        &-twitter {
+          background-image: url('../../assets/svg/twitter-logo.svg');
+        }
+      }
     }
 
-    &-instagram {
-      background-image: url('../../assets/svg/instagram-logo.svg');
-    }
+    &__phone-mail,
+    &__location {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
 
-    &-facebook {
-      background-image: url('../../assets/svg/facebook-logo.svg');
-    }
+      &__title {
+        @extend %font-title;
+      }
 
-    &-twitter {
-      background-image: url('../../assets/svg/twitter-logo.svg');
+      &__mail,
+      &__phone,
+      &__location {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        @extend %font-text;
+        text-decoration: none;
+        transition: 0.5s;
+
+        &-logo {
+          width: 5rem;
+          height: 5rem;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        &-text {
+          width: 100%;
+          max-width: 334px;
+        }
+      }
+
+      &__mail-logo {
+        background-image: url('../../assets/svg/mail-logo.svg');
+      }
+    
+      &__phone-logo {
+        background-image: url('../../assets/svg/phone-logo.svg');
+      }
+    
+      &__location-container-logo {
+        background-image: url('../../assets/svg/location-logo.svg');
+      }
     }
   }
 }
 
+@media(max-width: 750px) {
+  .footer-container {
+    flex-direction: column;
+  }
+}

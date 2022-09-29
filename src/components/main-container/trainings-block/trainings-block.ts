@@ -36,7 +36,7 @@ class TrainingsBlock extends Component {
     let count = 0;
     for (let elem of categories) {
         const card = new Component(this.cards.element, 'a', ['trainings-block__cards-card']);
-        card.element.style.backgroundImage = `linear-gradient( rgba(25, 25, 26, 0.4), rgba(25, 25, 26, 0.4) ), url('./assets/img/${elem[1]}')`;
+        card.element.style.backgroundImage = `linear-gradient( rgba(25, 25, 26, 0.2), rgba(25, 25, 26, 0.1) ), url('./assets/img/${elem[1]}')`;
         card.element.setAttribute('href', '#/trainings');
         card.element.setAttribute('data-category', `${elem[0]}`);
 

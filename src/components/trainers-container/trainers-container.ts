@@ -1,7 +1,8 @@
 import Component from '../../utils/component';
+import Trainers from '../../assets/files/trainers';
 import FormBlock from '../main-container/form-block/form-block';
 
-import './index.scss';
+import './trainers-container.scss';
 
 class TrainersContainer extends Component {
   private container: Component;
@@ -18,6 +19,8 @@ class TrainersContainer extends Component {
 
   private formBlock: FormBlock;
 
+  private content: Component;
+
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['trainers-container']);
 
@@ -32,7 +35,23 @@ class TrainersContainer extends Component {
     this.arrow.element.style.backgroundImage = 'url("./assets/svg/arrow-link.svg")';
     this.trainers = new Component(this.navigation.element, 'p', ['trainers-container__navigation__trainers'], 'Тренеры');
 
+    this.content = new Component(this.container.element, 'div', ['trainers-container__content']);
+    this.createCards();
+
     this.formBlock = new FormBlock(this.element);
+  }
+
+  private createCards() {
+    Trainers.forEach((item) => {
+      const card = new Component(this.content.element, 'div', ['trainers-container__content__card']);
+
+      const cardPhoto = new Component(card.element, 'div', ['trainers-container__content__card__photo']);
+      cardPhoto.element.style.backgroundImage = `url('./assets/img/${item.photo}')`;
+
+      const cardTitle = new Component(card.element, 'p', ['trainers-container__content__card__title'], `${item.name}`);
+
+      const cardDescription = new Component(card.element, 'p', ['trainers-container__content__card__description'], `${item.description}`);
+    });
   }
 
   private clear() {
