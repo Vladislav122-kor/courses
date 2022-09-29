@@ -1,9 +1,8 @@
 import Component from '../../utils/component';
-import schedule from '../../assets/files/schedule';
-import { Schedule } from '../../../src/interfaces/index';
+import Schedule from '../../assets/files/schedule';
 import FormBlock from '../main-container/form-block/form-block';
 
-import './index.scss';
+import './schedule-container.scss';
 
 class ScheduleContainer extends Component {
   private container: Component;
@@ -34,19 +33,23 @@ class ScheduleContainer extends Component {
   }
 
   private createSchedule() {
+    //the first day of the month
     const date = new Date(2022, +(sessionStorage.getItem('month') as string), 1);
+
     const days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
     let count = 0;
 
+    // add zero before month (if month includes only one number)
     let monthNumber;
     if ((sessionStorage.getItem('month') as string).length === 1) {
         monthNumber = `0${sessionStorage.getItem('month')}`;
     } else {
         monthNumber = `${sessionStorage.getItem('month')}`;
     }
-    
+
+    // create names of the days of week
     for (let i = 0; i < days.length; i++) {
-        const block = new Component(this.content.element, 'div', ['schedule-container__content__day']);
+        const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-week']);
         block.element.innerHTML = `<b>${days[i]}</b>`;
         block.element.style.fontSize = `2.5rem`;
         block.element.style.height = `75px`;
@@ -56,13 +59,17 @@ class ScheduleContainer extends Component {
         count++;
     }
 
+    // create empty slots before starting the first day of the month (empty slots of the previous month)
     for (let i = 0; i < date.getDay() - 1; i++) {
-        const block = new Component(this.content.element, 'div', ['schedule-container__content__day']);
+        const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-empty']);
         block.element.style.background = `rgba(223, 169, 116, 0.5)`;
         count++;
     }
 
+    //create slots with dates
     while(date.getMonth() === +(sessionStorage.getItem('month') as string)) {
+
+        // add zero before date (if the date includes only one number)
         let dateNumber;
         if (date.getDate().toString().length === 1) {
             dateNumber = `0${date.getDate()}`;
@@ -70,27 +77,31 @@ class ScheduleContainer extends Component {
             dateNumber = `${date.getDate()}`;
         }
 
-        const block = new Component(this.content.element, 'div', ['schedule-container__content__day']);
+        const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-full']);
         block.element.style.background = `rgba(223, 169, 116, 1)`;
         block.element.innerHTML = `<b>${dateNumber}.${monthNumber}</b>`;
 
-        schedule.forEach((elem) => {
+        // add training that is planning to be hold on this date
+        Schedule.forEach((elem) => {
             if (elem.month - 1 === +(sessionStorage.getItem('month') as string)) {
                 elem.trainings.forEach((element) => {
                     if (+(element[1]) === date.getDate()) {
                         block.element.innerHTML += '<br>' + element[0];
                         block.element.innerHTML += '<br>' + '<b>Город:</b> ' + element[2];
+                        block.element.classList.add('training-day');
                     }
                 });
             }
         })
 
+        // increase the date
         date.setDate(date.getDate() + 1);
         count++;
     }
 
+    // create empty slots after ending the last day of the month (empty slots of the future month)
     for (let i = 0; i < (date.getDay() - 8) * -1; i++) {
-        const block = new Component(this.content.element, 'div', ['schedule-container__content__day']);
+        const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-empty']);
         block.element.style.background = `rgba(223, 169, 116, 0.5)`;
         count++;
     }
@@ -103,7 +114,7 @@ class ScheduleContainer extends Component {
     arrow.element.style.backgroundImage = 'url("./assets/svg/arrow-down.svg")';
 
     const optionsBlock = new Component(button.element, 'div', ['schedule-container__button__options-block']);
-    schedule.forEach((item) => {
+    Schedule.forEach((item) => {
         const option = new Component(optionsBlock.element, 'p', ['schedule-container__button__options-block__option'], `${this.months[item.month - 1]}`);
         option.element.setAttribute('data-month', `${item.month - 1}`);
     })

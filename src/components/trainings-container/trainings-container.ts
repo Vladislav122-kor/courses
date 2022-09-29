@@ -113,7 +113,7 @@ class TrainingsContainer extends Component {
     for (let elem of trainingsSorted) {
         const card = new Component(this.cards.element, 'a', ['trainings-container__cards__card']);
         card.element.setAttribute('href', `#/trainings/${elem.link}`);
-        card.element.style.backgroundImage = `linear-gradient( rgba(25, 25, 26, 0.7), rgba(25, 25, 26, 0.4) ), url('./assets/img/${elem.photo}')`;
+        card.element.style.backgroundImage = `linear-gradient( rgba(25, 25, 26, 0.6), rgba(25, 25, 26, 0.3) ), url('./assets/img/${elem.photo}')`;
         const cardTitle = new Component(card.element, 'p', ['trainings-container__cards__card-title'], `${elem.name}`);
         const button = new Component(card.element, 'p', ['trainings-container__cards__card-button'], `ПОДРОБНЕЕ`);
     }

@@ -1,6 +1,7 @@
 import Component from '../../utils/component';
 import Trainings from '../../assets/files/trainings';
 import { Training } from '../../../src/interfaces/index';
+import Schedule from '../../assets/files/schedule';
 import FormBlock from '../main-container/form-block/form-block';
 
 import './training-container.scss';
@@ -38,6 +39,10 @@ class TrainingContainer extends Component {
 
   private mainBlock: Component;
   boardImg: Component;
+  titleInformationBlock: Component;
+  informationBlock: Component;
+  scheduleButton: Component;
+  priceButton: Component;
   
   constructor(parentNode: HTMLElement, trainingLink: string) {
     super(parentNode, 'div', ['training-container']);
@@ -76,7 +81,14 @@ class TrainingContainer extends Component {
     //block with title and image
     this.startBlock = new Component(this.content.element, 'div', ['training-container__content__start-block']);
 
-    this.title = new Component(this.startBlock.element, 'h2', ['training-container__content__start-block__title'], `${this.training.name}`);
+    this.titleInformationBlock = new Component(this.startBlock.element, 'div', ['training-container__content__start-block__title-information-block']);
+    this.title = new Component(this.titleInformationBlock.element, 'h2', ['training-container__content__start-block__title-information-block__title'], `${this.training.name}`);
+    this.informationBlock = new Component(this.titleInformationBlock.element, 'div', ['training-container__content__start-block__title-information-block__information-block'],);
+    this.scheduleButton = new Component(this.informationBlock.element, 'a', ['training-container__content__start-block__title-information-block__information-block-button'], 'Посмотреть расписание');
+    this.scheduleButton.element.setAttribute('href', '#/schedule');
+    this.priceButton = new Component(this.informationBlock.element, 'a', ['training-container__content__start-block__title-information-block__information-block-button'], 'Узнать стоимость');
+    this.priceButton.element.setAttribute('href', '#/price');
+
 
     this.img = new Component(this.startBlock.element, 'div', ['training-container__content__start-block__img']);
     this.img.element.style.backgroundImage = `url('./assets/img/${this.training.photo}')`;

@@ -1,6 +1,6 @@
 $font-montserrat: 'Montserrat', sans-serif;
 $font-color-title: #19191A;
-$font-color-card: #19191A;
+$font-color-card: white;
 $style-color: #DFA974;
 
 %font-title {
@@ -14,7 +14,7 @@ $style-color: #DFA974;
 %font-card-title {
     font-family: $font-montserrat;
     font-weight: 700;
-    font-size: 3.5rem;
+    font-size: 3rem;
     line-height: 3.7rem;
     text-align: center;
     color: $font-color-card;

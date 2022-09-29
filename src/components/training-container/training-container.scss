@@ -121,15 +121,43 @@ $style-color: #DFA974;
         justify-content: space-between;
         gap: 40px;
 
-        &__title {
-            @extend %font-title;
+        &__title-information-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 40px;
+
+            &__title {
+                @extend %font-title;
+            }
+
+            &__information-block {
+                display: flex;
+                justify-content: space-between;
+                gap: 20px;
+                padding: 20px;
+                background: #222736;
+
+                &-button {
+                    @extend %font-links;
+                    text-align: center;
+                    color: white;
+                    transition: 0.5s;
+                    cursor: pointer;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $style-color;
+                    }
+                }
+            }
         }
 
         &__img {
             width: 100%;
             min-width: 450px;
             max-width: 450px;
-            height: 280px;
+            height: 253px;
             background-size: contain;
             background-position: top right;
             background-repeat: no-repeat;
@@ -172,21 +200,21 @@ $style-color: #DFA974;
 }
 
 @media(max-width: 940px) {
-    .training-container__content__start-block__title {
+    .training-container__content__start-block__title-information-block__title {
         font-size: 3rem;
         line-height: 4rem;
     }
 }
 
 @media(max-width: 700px) {
-    .training-container__content__start-block__title {
+    .training-container__content__start-block__title-information-block__title {
         font-size: 2.5rem;
         line-height: 3.5rem;
     }
 }
 
 @media(max-width: 700px) {
-    .training-container__content__start-block__title {
+    .training-container__content__start-block__title-information-block__title {
         font-size: 2.5rem;
         line-height: 3.5rem;
     }
@@ -209,7 +237,7 @@ $style-color: #DFA974;
 }
 
 @media(max-width: 400px) {
-    .training-container__content__start-block__title {
+    .training-container__content__start-block__title-information-block__title {
         font-size: 2.2rem;
         line-height: 3.2rem;
     }

@@ -25,8 +25,8 @@ $style-color: #DFA974;
 
 %font-style-small {
     font-family: $font-source-sans-pro;
-    font-size: 1.3rem;
-    line-height: 1.6rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
     text-align: center;
     color: $font-color;
 }
@@ -59,7 +59,10 @@ $style-color: #DFA974;
     margin: 0 auto;
 
     &__day {
-        width: 200px;
+        padding: 5px;
+        width: 14.28%;
+        height: 200px;
+        @extend %font-style-small;
         border: 1px solid black;
     }
 }
@@ -115,11 +118,22 @@ $style-color: #DFA974;
     }
 }
 
-.schedule-container__content {
-    margin: 0 auto;
+@media(max-width: 800px) {
+    .schedule-container__content {
+        flex-direction: column;
 
-    &__day {
-        height: 150px;
-        @extend %font-style-small;
+        &__day {
+            width: 100%;
+        }
+    }
+
+    .day-week,
+    .day-empty,
+    .day-full {
+        display: none;
+    }
+
+    .training-day {
+        display: block;
     }
 }

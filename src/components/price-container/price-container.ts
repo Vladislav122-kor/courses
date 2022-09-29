@@ -2,7 +2,7 @@ import Component from '../../utils/component';
 import Trainings from '../../assets/files/trainings';
 import FormBlock from '../main-container/form-block/form-block';
 
-import './index.scss';
+import './price-container.scss';
 
 class PriceContainer extends Component {
   private container: Component;

@@ -110,6 +110,8 @@ class Router {
 
   updateRouter(): void {
     window.scrollTo(0, 0);
+    sessionStorage.setItem('month', `${(new Date).getMonth()}`);
+    sessionStorage.setItem('category', 'Все тренинги');
     const currentRouteName = window.location.hash.slice(1);
     if (currentRouteName === 'footer') {
       return;
