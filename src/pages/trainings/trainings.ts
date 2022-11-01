@@ -7,7 +7,6 @@ class Trainings extends Component {
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['trainings']);
 
-    console.log('hello');
     this.trainingsContainer = new TrainingsContainer(this.element);
   }
 

@@ -116,6 +116,18 @@ $style-color: #DFA974;
     }
 }
 
+@media(max-width: 1080px) {
+    .trainings-block__cards-card {
+        width: 47.5%;
+    }
+}
+
+@media(max-width: 750px) {
+    .trainings-block__cards-card {
+        width: 100%;
+    }
+}
+
 @media(max-width: 430px) {
     .trainings-block__title {
         font-size: 3.5rem;

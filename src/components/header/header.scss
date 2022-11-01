@@ -48,13 +48,24 @@ $style-color: #DFA974;
         }
     }
 
+    /*&__contacts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__email,
+        &__phone {
+            @extend %font-style-small;
+        }
+    }*/
+
     &__nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 20px;
         width: 100%;
-        max-width: 803px;
+        max-width: 720px;
 
         &-element {
             position: relative;
@@ -161,7 +172,7 @@ $style-color: #DFA974;
     }
 }
 
-@media(max-width: 1200px) {
+@media(max-width: 1050px) {
     .header {
         flex-direction: column;
         justify-content: center;
@@ -174,7 +185,7 @@ $style-color: #DFA974;
     }
 }
 
-@media(max-width: 720px) {
+@media(max-width: 660px) {
     .header {
         flex-direction: row;
         justify-content: space-between;

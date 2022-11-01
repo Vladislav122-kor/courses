@@ -6,6 +6,7 @@ import Training from '../pages/training/training';
 import Trainers from '../pages/trainers/trainers';
 import Schedule from '../pages/schedule/schedule';
 import Price from '../pages/price/price';
+import Contacts from '../pages/contacts/contacts';
 
 class Router {
   private readonly routes: Array<IRoute>;
@@ -26,6 +27,8 @@ class Router {
   private schedulePage: Schedule | undefined;
 
   private pricePage: Price | undefined;
+
+  private contactsPage: Contacts | undefined;
 
   constructor(private rootElement: HTMLElement) {
     this.trainingLink = '';
@@ -97,6 +100,16 @@ class Router {
           this.rootElement.append(this.pricePage.element);
         },
       },
+
+      {
+        name: '/contacts',
+        component: () => {
+          document.querySelectorAll('.header__nav-element').forEach((item) => item.classList.remove('active'));
+          document.querySelector('.header__link-contacts')?.classList.add('active');
+          this.contactsPage = new Contacts(this.rootElement);
+          this.rootElement.append(this.contactsPage.element);
+        },
+      },
     ];
 
     this.defaultRoute = {
@@ -111,16 +124,15 @@ class Router {
   updateRouter(): void {
     window.scrollTo(0, 0);
     sessionStorage.setItem('month', `${(new Date).getMonth()}`);
-    sessionStorage.setItem('category', 'Все тренинги');
     const currentRouteName = window.location.hash.slice(1);
-    if (currentRouteName === 'footer') {
-      return;
-    } else if (currentRouteName === 'about') {
+
+    if (currentRouteName === 'about') {
       window.location.hash = '#/';
       return;
     }
 
     this.rootElement.innerHTML = '';
+
     if (currentRouteName.split('/').length === 3) {
       this.trainingLink = currentRouteName.split('/')[2];
       const currentRoute = this.routes.find(

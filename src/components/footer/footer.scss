@@ -36,7 +36,7 @@ $background-color: #222736;
   &-container {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
+    gap: 30px;
     height: 100%;
     max-width: 1440px;
     margin: 0 auto;
@@ -59,27 +59,16 @@ $background-color: #222736;
 
       &__media {
         display: flex;
+        gap: 8px;
     
         &-instagram,
-        &-facebook,
-        &-twitter {
+        &-telegram,
+        &-wechat {
           width: 5rem;
           height: 5rem;
           background-repeat: no-repeat;
           background-position: center;
           cursor: pointer;
-        }
-    
-        &-instagram {
-          background-image: url('../../assets/svg/instagram-logo.svg');
-        }
-    
-        &-facebook {
-          background-image: url('../../assets/svg/facebook-logo.svg');
-        }
-    
-        &-twitter {
-          background-image: url('../../assets/svg/twitter-logo.svg');
         }
       }
     }
@@ -129,6 +118,14 @@ $background-color: #222736;
         background-image: url('../../assets/svg/location-logo.svg');
       }
     }
+  }
+}
+
+@media(max-width: 925px) {
+  .footer-container__phone-mail__mail,
+  .footer-container__phone-mail__phone,
+  .footer-container__location__location {
+    font-size: 1.6rem;
   }
 }
 

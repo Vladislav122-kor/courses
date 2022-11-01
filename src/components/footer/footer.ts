@@ -13,9 +13,9 @@ class Footer extends Component {
 
   private instagram: Component;
 
-  private facebook: Component;
+  private telegram: Component;
 
-  private twitter: Component;
+  private wechat: Component;
 
   private phoneMail: Component;
 
@@ -60,27 +60,30 @@ class Footer extends Component {
     this.instagram = new Component(this.media.element, 'div', ['footer-container__logo-container__media-instagram']);
     this.instagram.element.style.backgroundImage = 'url("./assets/svg/instagram-logo.svg")';
 
-    this.facebook = new Component(this.media.element, 'div', ['footer-container__logo-container__media-facebook']);
-    this.facebook.element.style.backgroundImage = 'url("./assets/svg/facebook-logo.svg")';
+    this.telegram = new Component(this.media.element, 'a', ['footer-container__logo-container__media-telegram']);
+    this.telegram.element.style.backgroundImage = 'url("./assets/svg/telegram-logo.svg")';
+    this.telegram.element.setAttribute('href', 'https://t.me/cartrainingcenter');
+    this.telegram.element.setAttribute('target', '_blank');
 
-    this.twitter = new Component(this.media.element, 'div', ['footer-container__logo-container__media-twitter']);
-    this.twitter.element.style.backgroundImage = 'url("./assets/svg/twitter-logo.svg")';
+    this.wechat = new Component(this.media.element, 'div', ['footer-container__logo-container__media-wechat']);
+    this.wechat.element.style.backgroundImage = 'url("./assets/svg/wechat-logo.svg")';
 
     // create phone and mail
     this.phoneMail = new Component(this.footerContainer.element, 'div', ['footer-container__phone-mail']);
     this.phoneMailTitle = new Component(this.phoneMail.element, 'h2', ['footer-container__phone-mail__title'], "Контакты");
 
     this.mailContainer = new Component(this.phoneMail.element, 'a', ['footer-container__phone-mail__mail']);
-    this.mailContainer.element.setAttribute('href', 'mailto:study@center.by');
+    this.mailContainer.element.setAttribute('href', 'mailto:training.center.magnat@gmail.com');
     this.mailLogo = new Component(this.mailContainer.element, 'div', ['footer-container__phone-mail__mail-logo']);
     this.mailLogo.element.style.backgroundImage = 'url("./assets/svg/mail-logo.svg")';
-    this.mailText = new Component(this.mailContainer.element, 'p', ['footer-container__phone-mail__mail-text'], 'study@center.by');
+    this.mailText = new Component(this.mailContainer.element, 'p', ['footer-container__phone-mail__mail-text']);
+    this.mailText.element.innerHTML = `training.center.magnat<br>@gmail.com`
 
     this.phoneContainer = new Component(this.phoneMail.element, 'a', ['footer-container__phone-mail__phone']);
-    this.phoneContainer.element.setAttribute('href', 'tel:+375291234567');
+    this.phoneContainer.element.setAttribute('href', 'tel:+375292927035');
     this.phoneLogo = new Component(this.phoneContainer.element, 'div', ['footer-container__phone-mail__phone-logo']);
     this.phoneLogo.element.style.backgroundImage = 'url("./assets/svg/phone-logo.svg")';
-    this.phoneText = new Component(this.phoneContainer.element, 'p', ['footer-container__phone-mail__phone-text'], '+375 17 123 45 67');
+    this.phoneText = new Component(this.phoneContainer.element, 'p', ['footer-container__phone-mail__phone-text'], '+375 29 292 70 35');
 
     // create location
     this.location = new Component(this.footerContainer.element, 'div', ['footer-container__location']);

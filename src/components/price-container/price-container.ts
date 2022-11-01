@@ -38,9 +38,10 @@ class PriceContainer extends Component {
 
         const priceBlock = new Component(card.element, 'div', ['price-container__content__card__price-block']);
         const description = new Component(priceBlock.element, 'p', ['price-container__content__card__price-block__description']);
-        description.element.innerHTML = `<b>Длительность курса:</b><br>${elem.days}`;
+        description.element.innerHTML = `<b>Длительность:</b><br>${elem.days}`;
         const price = new Component(priceBlock.element, 'div', ['price-container__content__card__price-block__price']);
-        const priceText = new Component(price.element, 'p', ['price-container__content__card__price-block__price-text'], `${elem.price} byn`);
+        const priceText = new Component(price.element, 'p', ['price-container__content__card__price-block__price-text']);
+        priceText.element.innerHTML = `${elem.price} BYN`;
     }
   }
 

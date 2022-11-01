@@ -29,7 +29,7 @@ class StartBlock extends Component {
     // create text part
     this.text = new Component(this.textBlock.element, 'div', ['start-block__text-block__text']);
     this.title = new Component(this.text.element, 'h1', ['start-block__text-block__text__title']);
-    this.title.element.innerHTML = 'Тренинги<br>различных направлений'
+    this.title.element.innerHTML = 'Тренинги<br>автосервисных направлений'
     this.description = new Component(this.text.element, 'p', ['start-block__text-block__text__description'], 'Учебно-консультационный центр «Магнат» более 10-и лет предоставляет обучающие услуги в сфере обслуживания, ремонта автомобилей и управления автосервисным предприятием. В разделе “Тренинги” Вы можете ознакомиться с перечнем и содержанием проводимых тренингов, а также записаться на обучение.');
     this.description.element.innerHTML += '<br>Обучаемся Вместе с удовольствием!';
 

@@ -125,6 +125,7 @@ $style-color: #DFA974;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            width: 100%;
             gap: 40px;
 
             &__title {
@@ -222,7 +223,7 @@ $style-color: #DFA974;
 
 @media(max-width: 600px) {
     .training-container__content__start-block {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .training-container__content__start-block__img {

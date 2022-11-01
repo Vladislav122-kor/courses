@@ -5,6 +5,12 @@ import './header.scss';
 class Header extends Component {
   private logo: Component;
 
+  //private contacts: Component;
+
+  //private email: Component;
+
+  //private phone: Component;
+
   private nav: Component;
 
   private burger: Component;
@@ -23,6 +29,13 @@ class Header extends Component {
     // create navigation list
     this.nav = new Component(this.element, 'div', ['header__nav']);
     this.addNavLinks();
+
+    // create contacts information
+    /*this.contacts = new Component(this.element, 'div', ['header__contacts']);
+    this.email = new Component(this.contacts.element, 'a', ['header__contacts__email'], 'training.center.magnat@gmail.com');
+    this.email.element.setAttribute('href', 'mailto:training.center.magnat@gmail.com');
+    this.phone = new Component(this.contacts.element, 'a', ['header__contacts__phone'], '+375 29 292 70 35');
+    this.phone.element.setAttribute('href', 'tel:+375292927035');*/
 
     // create burger menu
     this.burger = new Component(this.element, 'div', ['header__burger']);
@@ -45,9 +58,9 @@ class Header extends Component {
   }
 
   private addNavLinks() {
-    const linkNames = ['Главная', 'Тренинги', 'Тренеры', 'О нас', 'Расписание', 'Запись', 'Цены', 'Контакты'];
-    const linkHrefs = ['#/', '#/trainings', '#/trainers', '#about', '#/schedule', '#/registration', '#/price', '#footer'];
-    const linkClasses = ['main', 'trainings', 'trainers', 'about', 'schedule', 'registration', 'price', 'contacts'];
+    const linkNames = ['Главная', 'Тренинги', 'Тренеры', 'О нас', 'Расписание','Цены', 'Контакты'];
+    const linkHrefs = ['#/', '#/trainings', '#/trainers', '#about', '#/schedule', '#/price', '#/contacts'];
+    const linkClasses = ['main', 'trainings', 'trainers', 'about', 'schedule', 'price', 'contacts'];
 
     for (let i = 0; i < linkNames.length; i += 1) {
       const link = new Component(this.nav.element, 'a', ['header__nav-element', `header__link-${linkClasses[i]}`], `${linkNames[i]}`);

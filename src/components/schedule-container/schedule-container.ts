@@ -40,11 +40,12 @@ class ScheduleContainer extends Component {
     let count = 0;
 
     // add zero before month (if month includes only one number)
-    let monthNumber;
-    if ((sessionStorage.getItem('month') as string).length === 1) {
-        monthNumber = `0${sessionStorage.getItem('month')}`;
+    let monthNumber: string | number = Number(sessionStorage.getItem('month')) + 1;
+    
+    if (monthNumber.toString().length === 1) {
+        monthNumber = `0${monthNumber.toString()}`;
     } else {
-        monthNumber = `${sessionStorage.getItem('month')}`;
+        monthNumber = `${monthNumber.toString()}`;
     }
 
     // create names of the days of week
@@ -99,8 +100,10 @@ class ScheduleContainer extends Component {
         count++;
     }
 
+    date.setDate(date.getDate() - 1); // the last day of current month
+
     // create empty slots after ending the last day of the month (empty slots of the future month)
-    for (let i = 0; i < (date.getDay() - 8) * -1; i++) {
+    for (let i = 0; i < 7 - date.getDay(); i++) {
         const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-empty']);
         block.element.style.background = `rgba(223, 169, 116, 0.5)`;
         count++;

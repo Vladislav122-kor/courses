@@ -110,23 +110,25 @@ class TrainingContainer extends Component {
 
     // for each point create block and fill it with point title and description
     for (let i = 3; i < Object.values(this.training).length - 3; i++) {
-      const context = new Component(this.mainBlock.element, 'div', ['training-container__content__main-block__context']);
-      const title = new Component(context.element, 'p', ['training-container__content__main-block__context-title']);
-      title.element.innerHTML = `<b>${titles[i]}:</b>`
-      
-      const description = new Component(context.element, 'p', ['training-container__content__main-block__context-description']);
-
-      // both cases for description as massive or as string
-      if (Array.isArray(Object.values(this.training)[i])) {
-        for (let y = 0; y < Object.values(this.training)[i].length; y++) {
-          if (y === 0) {
-            description.element.innerHTML = `- ${Object.values(this.training)[i][y]}`;
-          } else {
-            description.element.innerHTML += `<br>- ${Object.values(this.training)[i][y]}`;
+      if (Object.values(this.training)[i].length !== 0) {
+        const context = new Component(this.mainBlock.element, 'div', ['training-container__content__main-block__context']);
+        const title = new Component(context.element, 'p', ['training-container__content__main-block__context-title']);
+        title.element.innerHTML = `<b>${titles[i]}:</b>`
+        
+        const description = new Component(context.element, 'p', ['training-container__content__main-block__context-description']);
+  
+        // both cases for description as massive or as string
+        if (Array.isArray(Object.values(this.training)[i])) {
+          for (let y = 0; y < Object.values(this.training)[i].length; y++) {
+            if (y === 0) {
+              description.element.innerHTML = `- ${Object.values(this.training)[i][y]}`;
+            } else {
+              description.element.innerHTML += `<br>- ${Object.values(this.training)[i][y]}`;
+            }
           }
+        } else {
+          description.element.innerHTML = `${Object.values(this.training)[i]}`;
         }
-      } else {
-        description.element.innerHTML = `${Object.values(this.training)[i]}`;
       }
     }
   }

@@ -25,8 +25,8 @@ $style-color: #DFA974;
 
 %font-style-small {
     font-family: $font-source-sans-pro;
-    font-size: 1.6rem;
-    line-height: 2rem;
+    font-size: 1.8rem;
+    line-height: 2.3rem;
     text-align: center;
     color: $font-color;
 }
@@ -118,7 +118,7 @@ $style-color: #DFA974;
     }
 }
 
-@media(max-width: 800px) {
+@media(max-width: 900px) {
     .schedule-container__content {
         flex-direction: column;
 

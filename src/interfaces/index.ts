@@ -14,7 +14,7 @@ export interface Training {
   benefit: string[];
   days: string;
   people: string;
-  place: string;
+  place: string[];
   suggestions: string[];
   category: string;
   link: string;
@@ -30,5 +30,6 @@ export interface Trainer {
 
 export interface Schedule {
   month: number;
+  year: number;
   trainings: (string | string[])[];
 }

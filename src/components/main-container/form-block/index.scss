@@ -17,8 +17,8 @@ $background-color: #222736;
 %font-description {
     font-family: $font-source-sans-pro;
     font-weight: 600;
-    font-size: 1.8rem;
-    line-height: 3rem;
+    font-size: 2rem;
+    line-height: 3.5rem;
     color: $font-color;
 }
 
@@ -57,7 +57,7 @@ $background-color: #222736;
         justify-content: flex-end;
         max-width: 1440px;
         margin: 0 auto;
-        padding: 40px 20px;
+        padding: 120px 20px;
     }
 
     &__content {
@@ -65,7 +65,7 @@ $background-color: #222736;
         flex-direction: column;
         gap: 20px;
         width: 100%;
-        max-width: 390px;
+        max-width: 320px;
 
         &__title {
             @extend %font-title;
@@ -82,7 +82,7 @@ $background-color: #222736;
             @extend %font-description;
         }
 
-        &__input-name,
+        /*&__input-name,
         &__input-phone {
             width: 100%;
             max-width: 275px;
@@ -161,7 +161,7 @@ $background-color: #222736;
             &:hover {
                 box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.5);
             }
-        }
+        }*/
     }
 }
 

@@ -7,17 +7,17 @@ class FormBlock extends Component {
 
   private title: Component;
 
-  private name: Component;
+  //private name: Component;
 
-  private phone: Component;
+  //private phone: Component;
 
-  private checkboxContainer: Component;
+  //private checkboxContainer: Component;
 
-  private checkbox: Component;
+  //private checkbox: Component;
 
-  private label: Component;
+  //private label: Component;
 
-  private button: Component;
+  //private button: Component;
 
   private line: Component;
 
@@ -27,7 +27,7 @@ class FormBlock extends Component {
     super(parentNode, 'div', ['form-block']);
     this.element.style.backgroundImage = 'linear-gradient( rgba(25, 25, 26, 0.5), rgba(25, 25, 26, 0.5) ), url("./assets/img/form.jpg")';
 
-    this.formSend = this.formSend.bind(this);
+    //this.formSend = this.formSend.bind(this);
 
     // common container for two blocks
     this.container = new Component(this.element, 'div', ['form-block__container']);
@@ -37,8 +37,9 @@ class FormBlock extends Component {
     this.container.element.appendChild(form);
     this.title = new Component(form, 'h2', ['form-block__content__title'], 'Остались вопросы?');
     this.line = new Component(form, 'div', ['form-block__content__line']);
-    this.description = new Component(form, 'p', ['form-block__content__description'], 'Вы можете задать свой вопрос по e-mail: study@mail.ru, или оставьте Ваши контактные данные и мы свяжемся с Вами!');
-    this.name = new Component(form, 'input', ['form-block__content__input-name', '_req']);
+    this.description = new Component(form, 'p', ['form-block__content__description']);
+    this.description.element.innerHTML = 'Вы можете задать свой вопрос или записаться на тренинг по e-mail: <br><u>training.center.magnat@gmail.com</u>, либо по номеру телефона: <br><u>+375 29 292 70 35</u>';
+    /*this.name = new Component(form, 'input', ['form-block__content__input-name', '_req']);
     this.name.element.setAttribute('placeholder', 'Ваше имя*');
     this.name.element.setAttribute('type', 'text');
     this.name.element.setAttribute('name', 'name');
@@ -58,10 +59,10 @@ class FormBlock extends Component {
     this.label.element.setAttribute('for', 'formConsent');
     this.button = new Component(form, 'button', ['form-block__content__button'], 'ЗАКАЗАТЬ ЗВОНОК');
     this.button.element.setAttribute('type', 'submit');
-    form.addEventListener('submit', this.formSend);
+    form.addEventListener('submit', this.formSend);*/
   }
 
-  private async formSend(e: { preventDefault: () => void; }) {
+  /*private async formSend(e: { preventDefault: () => void; }) {
     e.preventDefault();
 
     const form = document.querySelector('.form-block__content') as HTMLFormElement;
@@ -85,9 +86,9 @@ class FormBlock extends Component {
     } else {
         alert('Заполните обязательные поля.');
     }
-  }
+  }*/
 
-  private formValidate(form: HTMLFormElement) {
+  /*private formValidate(form: HTMLFormElement) {
     let error = 0;
     let formReq = document.querySelectorAll('._req');
 
@@ -108,15 +109,15 @@ class FormBlock extends Component {
     }
 
     return error;
-  }
+  }*/
 
-  private formAddError(input: HTMLInputElement) {
+  /*private formAddError(input: HTMLInputElement) {
     input.classList.add('_error');
-  }
+  }*/
 
-  private formRemoveError(input: HTMLInputElement) {
+  /*private formRemoveError(input: HTMLInputElement) {
     input.classList.remove('_error');
-  }
+  }*/
 
   private clear() {
     // this.content.element.innerHTML = '';
