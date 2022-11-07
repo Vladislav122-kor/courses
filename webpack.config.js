@@ -51,7 +51,7 @@ const baseConfig = {
     extensions: ['.js', '.ts'],
   },
   output: {
-    filename: 'index.js',
+    filename: 'script.js',
     path: path.resolve(__dirname, './dist'),
     assetModuleFilename: 'images/[hash][ext][query]',
   },
@@ -59,6 +59,7 @@ const baseConfig = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
+      inject: 'body',
     }),
     new CopyWebpackPlugin({
       patterns: [
