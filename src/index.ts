@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
   //document.head.appendChild($favicon);
 
   sessionStorage.setItem('category', 'Все тренинги');
-  sessionStorage.setItem('month', `${(new Date).getMonth()}`);
+  sessionStorage.setItem('month', `${(new Date()).getMonth() + 1}`);
   const rootElement = document.body;
   const app = new App(rootElement);
 

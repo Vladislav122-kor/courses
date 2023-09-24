@@ -47,6 +47,14 @@ $background-color: #222736;
     color: $font-color; 
 }
 
+%input {
+    @extend %font-input-text;
+    padding: 10px 10px;
+    background: $background-input;
+    border: none;
+    border-radius: 10px;
+}
+
 .form-block {
     width: 100%;
     background-size: cover;
@@ -57,10 +65,10 @@ $background-color: #222736;
         justify-content: flex-end;
         max-width: 1440px;
         margin: 0 auto;
-        padding: 120px 20px;
+        padding: 80px 20px;
     }
 
-    &__content {
+    &__form {
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -82,87 +90,81 @@ $background-color: #222736;
             @extend %font-description;
         }
 
-        /*&__input-name,
-        &__input-phone {
-            width: 100%;
-            max-width: 275px;
-            height: 50px;
-            @extend %font-input-text;
-            padding: 20px 14px;
-            background: $background-input;
-            border: none;
-            border-radius: 10px;
-            transition: 0.5s;
-
-            &:hover {
-                box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.5);
-            }
-
-            &._error {
-                border: 3px solid red;
-            }
-        }
-
-        &__input-name::-webkit-input-placeholder,
-        &__input-phone::-webkit-input-placeholder { color: $font-input-color; }
-
-        &__input-name:-ms-input-placeholder,
-        &__input-phone:-ms-input-placeholder { color: $font-input-color; }
-
-        &__input-name::-ms-input-placeholder,
-        &__input-phone::-ms-input-placeholder { color: $font-input-color; }
-
-        &__input-name::placeholder,
-        &__input-phone::placeholder { color: $font-input-color; }
-
-        &__input-phone::-webkit-outer-spin-button,
-        &__input-phone::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-         
-        &__input-phone {
-          -moz-appearance: textfield;
-        }       
-
-        &__checkbox {
+        &__data {
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            width: 100%;
-            transition: 0.5s;
+            flex-direction: column;
+            gap: 10px;
 
-            &._error {
-                border: 3px solid red;
+            &__input-phone-block {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 5px;
+                width: 100%;
+
+                &__start-phone-number {
+                    @extend %font-checkbox-text;
+                    font-size: 24px;
+                }
+
+                &__code-number {
+                    width: 20%;
+                    @extend %input;
+                }
+
+                &__phone-number {
+                    width: 60%;
+                    @extend %input;
+                }
             }
 
-            &-input {
-                width: 3rem;
-                height: 3rem;
+            &__input {
+                @extend %input;
             }
 
-            &-label {
-                @extend %font-checkbox-text;
+            &__checkbox-block {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+
+                &__checkbox {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                &__checkbox-description {
+                    @extend %font-checkbox-text;
+
+                    a {
+                        color: white;
+                    }
+                }
             }
         }
 
-        &__button {
+        &__button,
+        &__waiting-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            max-width: 275px;
             height: 64px;
-            padding: 0 20px;
             @extend %font-button-text;
             background: $background-color;
-            border: none;
-            cursor: pointer;
             border-radius: 10px;
-            transition: 0.5s;
+            cursor: pointer;
+        }
 
-            &:hover {
-                box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.5);
-            }
-        }*/
+        &__waiting-button {
+            display: none;
+            background: #181c29;
+            cursor: auto;
+        }
     }
+}
+
+.mistake {
+    border: 1px solid red;
 }
 
 @media(max-width: 300px) {

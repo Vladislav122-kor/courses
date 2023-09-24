@@ -6,13 +6,9 @@ import './schedule-container.scss';
 
 class ScheduleContainer extends Component {
   private container: Component;
-
   private formBlock: FormBlock;
-
   private line: Component;
-
   private content: Component;
-
   private months: string[];
   
   constructor(parentNode: HTMLElement) {
@@ -34,7 +30,7 @@ class ScheduleContainer extends Component {
 
   private createSchedule() {
     //the first day of the month
-    const date = new Date(2022, +(sessionStorage.getItem('month') as string), 1);
+    const date = new Date(2023, +(sessionStorage.getItem('month') as string), 1);
 
     const days = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
     let count = 0;
@@ -61,10 +57,18 @@ class ScheduleContainer extends Component {
     }
 
     // create empty slots before starting the first day of the month (empty slots of the previous month)
-    for (let i = 0; i < date.getDay() - 1; i++) {
-        const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-empty']);
-        block.element.style.background = `rgba(223, 169, 116, 0.5)`;
-        count++;
+    if (date.getDay() === 0) {
+        for (let i = 0; i < 6; i++) {
+            const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-empty']);
+            block.element.style.background = `rgba(223, 169, 116, 0.5)`;
+            count++;
+        }
+    } else {
+        for (let i = 0; i < date.getDay() - 1; i++) {
+            const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-empty']);
+            block.element.style.background = `rgba(223, 169, 116, 0.5)`;
+            count++;
+        }
     }
 
     //create slots with dates
@@ -103,10 +107,12 @@ class ScheduleContainer extends Component {
     date.setDate(date.getDate() - 1); // the last day of current month
 
     // create empty slots after ending the last day of the month (empty slots of the future month)
-    for (let i = 0; i < 7 - date.getDay(); i++) {
-        const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-empty']);
-        block.element.style.background = `rgba(223, 169, 116, 0.5)`;
-        count++;
+    if (date.getDay() !== 0) {
+        for (let i = 0; i < 7 - date.getDay(); i++) {
+            const block = new Component(this.content.element, 'div', ['schedule-container__content__day', 'day-empty']);
+            block.element.style.background = `rgba(223, 169, 116, 0.5)`;
+            count++;
+        }
     }
   }
 

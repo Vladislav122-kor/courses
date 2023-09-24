@@ -5,25 +5,15 @@ import './contacts-container.scss';
 
 class ContactsContainer extends Component {
   private container: Component;
-
   private line: Component;
-
   private content: Component;
-
   private information: Component;
-
   private map: Component;
-
   private formBlock: FormBlock;
-
   private email: Component;
-
   private phone: Component;
-
   private location: Component;
-
   //private instagram: Component;
-
   private telegram: Component;
 
   private wechat: Component;
